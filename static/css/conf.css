@@ -1,0 +1,15 @@
+.page {
+    background-color: #ffda0e;
+}
+
+.wrapper,
+.container,
+.page,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.block.full {
+    height: 100%;
+}

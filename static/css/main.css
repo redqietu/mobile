@@ -1,0 +1,54 @@
+/*p1*/
+
+.p1 {
+    display: none;
+}
+
+.p1 {
+    background-image: url(../images/bk/bk-dian.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.p1 .wrapper {
+    background-image: url(../images/bk/bk-sanshe.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.bk-p1 {
+    background-image: url(../images/bk/bk-p1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 50%;
+}
+
+.p1 #btn-lijixiaheishou {
+    position: absolute;
+    left: 0.8rem;
+    bottom: 1.22rem;
+}
+
+
+/*p1End*/
+
+.p2 {
+    background-image: url(../images/bk/bk-p2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.p2 .daojishi {}
+
+.p2 .daojishi-number {
+    opacity: 0;
+}
+
+
+/*p2*/
+
+
+/*p2End*/
