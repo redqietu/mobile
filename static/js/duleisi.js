@@ -49,17 +49,20 @@ function daojishi(target, container, begin, onComplete) {
         onComplete: function() {
             $(this.target).hide();
         }
-    }).add(onComplete);
+    });
 }
 
-function comeIn(target, onComplete) {
-    return TweenMax.fromTo(target, 1, {
+function comeIn(target, after, onComplete) {
+    var timeline = new TimelineMax({
+        onComplete: onComplete
+    });
+    return timeline.fromTo(target, 1, {
         scale: 9,
     }, {
         scale: 1,
-        onComplete: onComplete,
+        // onComplete: onComplete,
         ease: Power1.easeIn,
-    });
+    }).add(after);
 }
 
 function comeIn2(target) {
@@ -71,6 +74,26 @@ function comeIn2(target) {
 }
 
 function begin() {
-    var carComeIn = _.partial(comeIn2, $('.car'));
-    comeIn($('.p2 .xiaoqu'), _.partial(daojishi, $('.daojishi'), $('.daojishi-container'), 3, carComeIn));
+    // var carComeIn = _.partial(comeIn2, $('.car'));
+    var daojishiWithmengban = _.compose(function() {
+        $('.p2 .mengban').css({
+            backgroundColor: '#000',
+            opacity: 0.4
+        });
+    }, _.partial(daojishi, $('.daojishi'), $('.daojishi-container'), 3));
+
+
+
+
+
+
+
+    comeIn($('.p2 .xiaoqu'), comeIn2($('.car')), daojishiWithmengban);
+
+
+
+
+
+
+
 }
