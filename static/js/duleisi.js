@@ -10,19 +10,25 @@ function daojishi(target, container, begin, onComplete) {
         force3D: true,
         ease: Power1.easeInOut
     });
-    var timeline = new TimelineMax().fromTo(target, 1, {
-        scale: 6,
-        rotationZ: 500,
+    var timeline = new TimelineMax().
+    fromTo(target, 0.4, {
+        scale: 0.2,
+        opacity: 0,
+        rotationX: '+100',
+        rotationY: '-60',
+        rotationZ: '-300',
     }, {
         scale: 1,
+        opacity: 1,
+        yoyo: true,
+        rotationX: 0,
+        rotationY: 0,
         rotationZ: 0,
-    }).staggerFromTo(target.find('.daojishi-number'), 1, {
+    }).
+    staggerFromTo(target.find('.daojishi-number'), 1, {
         alpha: 0,
         scale: 1.6,
-        ease: Power1.easeInOut,
-        onComplete: function() {
-            // $(this.target).hide();
-        }
+        ease: Power1.easeInOut
     }, {
         alpha: 1,
         scale: 0.6,
@@ -32,11 +38,9 @@ function daojishi(target, container, begin, onComplete) {
                 opacity: 0,
                 display: 'none'
             });
-            if (++i == max) {
-                onComplete && onComplete();
-            }
         }
-    }, 1).to(target, 1, {
+    }, 1).
+    to(target, 1, {
         opacity: 0,
         delay: 0.4,
         rotationY: '+180',
@@ -45,40 +49,28 @@ function daojishi(target, container, begin, onComplete) {
         onComplete: function() {
             $(this.target).hide();
         }
+    }).add(onComplete);
+}
+
+function comeIn(target, onComplete) {
+    return TweenMax.fromTo(target, 1, {
+        scale: 9,
+    }, {
+        scale: 1,
+        onComplete: onComplete,
+        ease: Power1.easeIn,
     });
 }
 
-function sceneOut(target, container) {
-    // TweenMax.set(container, {
-    //     perspective: '5rem',
-    // });
-    // TweenMax.set(target, {
-    //     transformOrigin: 'center center -600px',
-    //     force3D: true,
-    //     ease: Power1.easeInOut
-    // });
-    // TweenMax.to(target, 1, {
-    //     opacity: 0,
-    //     delay: 0.4,
-    //     rotationY: '+180',
-    //     rotationX: '+60',
-    //     rotationZ: '+30',
-    //     onComplete: function() {
-    //         $(this.target).hide();
-    //     }
-    // });
-}
-
-function lajin(target, onComplete) {
-    TweenMax.to(target, 2, {
-        scale: 1,
-        onComplete: onComplete,
-        ease: Power1.easeInOut,
+function comeIn2(target) {
+    return TweenMax.to(target, 1, {
+        x: '+100',
+        y: '-40',
+        ease: Power1.easeOut
     });
 }
 
 function begin() {
-    var step2 = _.partial(sceneOut, $('.daojishi'), $('.daojishi-container'));
-    var step1 = _.partial(daojishi, $('.daojishi'), $('.daojishi-container'), 3, step2);
-    lajin($('.p2 .xiaoqu'), step1);
+    var carComeIn = _.partial(comeIn2, $('.car'));
+    comeIn($('.p2 .xiaoqu'), _.partial(daojishi, $('.daojishi'), $('.daojishi-container'), 3, carComeIn));
 }

@@ -46,7 +46,7 @@
 }
 
 .p2 .xiaoqu {
-    transform: scale(2);
+    transform: scale(9);
 }
 
 .p2 .daojishi {
@@ -55,6 +55,16 @@
 
 .p2 .daojishi-number {
     opacity: 0;
+}
+
+.p2 .car {
+    background-image: url(../images/flotage/car.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-1000px, 400px);
 }
 
 
