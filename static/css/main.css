@@ -35,13 +35,23 @@
 /*p1End*/
 
 .p2 {
+    background-color: #000;
+}
+
+.p2 .wrapper {
     background-image: url(../images/bk/bk-p2.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
 }
 
-.p2 .daojishi {}
+.p2 .xiaoqu {
+    transform: scale(2);
+}
+
+.p2 .daojishi {
+    transform: scale(0);
+}
 
 .p2 .daojishi-number {
     opacity: 0;
