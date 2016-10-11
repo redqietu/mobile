@@ -1,8 +1,9 @@
 ! function($, _, echo, Swiper) {
-    echo.init({
-        offset: 100,
-        throttle: 250,
-        unload: false,
-        callback: function(element, op) {}
-    });
+    // echo.init({
+    //     offset: 100,
+    //     throttle: 250,
+    //     unload: false,
+    //     callback: function(element, op) {}
+    // });
+    init();
 }($, _, echo, Swiper);

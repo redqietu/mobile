@@ -10,7 +10,9 @@ function daojishi(target, container, begin, onComplete) {
         force3D: true,
         ease: Power1.easeInOut
     });
-    var timeline = new TimelineMax().
+    var timeline = new TimelineMax({
+        onComplete: onComplete
+    }).
     fromTo(target, 0.4, {
         scale: 0.2,
         opacity: 0,
@@ -83,9 +85,99 @@ function comeIn2(target) {
 function begin() {
     var daojishiWithmengban = _.compose(function() {
         TweenMax.to($('.p2 .mengban'), 8, {
-            opacity: 0.7,
+            opacity: 0.6,
             backgroundColor: '#000'
         });
-    }, _.partial(daojishi, $('.daojishi'), $('.daojishi-container'), 3));
+    }, _.partial(daojishi, $('.daojishi'), $('.daojishi-container'), 3, function() {
+        $('#duleisi').show();
+    }));
     comeIn($('.p2 .xiaoqu'), comeIn2($('.car')), daojishiWithmengban);
+}
+
+function init() {
+    LInit(60, 'duleisi', $(window).width(), $(window).height(), gameInit);
+}
+
+var loadData = [{
+    path: './static/images/bk/bk-dian.png',
+    name: 'bk-dian'
+}, {
+    path: './static/images/bk/bk-p1.png',
+    name: 'bk-p1'
+}, {
+    path: './static/images/bk/bk-p2.png',
+    name: 'bk-p2'
+}, {
+    path: './static/images/btn/btn-lijixiaheishou.png',
+    name: 'btn-lijixiaheishou'
+}, {
+    path: './static/images/sprite/1.png',
+    name: '1'
+}, {
+    path: './static/images/sprite/2.png',
+    name: '2'
+}, {
+    path: './static/images/sprite/3.png',
+    name: '3'
+}, {
+    path: './static/images/sprite/car.png',
+    name: 'car'
+}, {
+    path: './static/images/sprite/daojishi.png',
+    name: 'daojishi'
+}, {
+    path: './static/images/sprite/tt1.png',
+    name: 'tt1'
+}, {
+    path: './static/images/sprite/tt2.png',
+    name: 'tt2'
+}, {
+    path: './static/images/sprite/tt3.png',
+    name: 'tt3'
+}, {
+    path: './static/images/sprite/xtt1.png',
+    name: 'xtt1'
+}, {
+    path: './static/images/sprite/xtt2.png',
+    name: 'xtt2'
+}, {
+    path: './static/images/sprite/xtt3.png',
+    name: 'xtt3'
+}];
+
+function lijixiaheishou() {
+    $('#btn-lijixiaheishou').on('tap', function() {
+        TweenMax.to('.p1', 1, {
+            opacity: 0.1,
+            onComplete: function() {
+                $('.p2').show();
+                TweenMax.fromTo($('.p2').show(), 0.6, {
+                    opacity: 0,
+                }, {
+                    opacity: 1,
+                    ease: Back.easeOut
+                });
+                begin();
+            }
+        });
+    });
+}
+
+function gameInit() {
+    var backlayer = new LSprite();
+    loadingLayer = new LoadingSample4();
+    addChild(backlayer);
+    backlayer.addChild(loadingLayer);
+    LLoadManage.load(loadData, function(x) {
+        loadingLayer.setProgress(x);
+    }, function(r) {
+        setTimeout(function() {
+            backlayer.removeChild(loadingLayer);
+            loadingLayer = null;
+            $('#duleisi').hide();
+            $('body').removeClass('loading');
+            lijixiaheishou();
+            $('.page').css('backgroundColor', '#f7f7f7');
+        }, 100);
+    });
 }

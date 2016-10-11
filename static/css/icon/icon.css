@@ -1,11 +1,8 @@
-.icon img {
-    width: auto;
-    height: auto;
-}
-
 .icon-emao {
     position: absolute;
     left: 0;
     right: 0;
     z-index: 99;
+    width: 2.33rem;
+    height: 1.41rem;
 }

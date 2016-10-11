@@ -1,7 +1,7 @@
 /*p1*/
 
 .p1 {
-    display: none;
+    /*display: none;*/
 }
 
 .p1 {
@@ -27,12 +27,39 @@
 
 .p1 #btn-lijixiaheishou {
     position: absolute;
-    left: 0.8rem;
+    left: 50%;
+    margin-left: -2.045rem;
     bottom: 1.22rem;
+    width: 4.09rem;
+    height: 0.73rem;
+}
+
+.p1 {
+    background-color: #ffda0e;
+}
+
+.p1 .left {
+    position: absolute;
+    left: 0;
+    top: 6.63rem;
+    width: 1.23rem;
+    height: 3.66rem;
+}
+
+.p1 .right {
+    position: absolute;
+    right: 0;
+    top: 6.63rem;
+    width: 1.41rem;
+    height: 3.66rem;
 }
 
 
 /*p1End*/
+
+.p2 {
+    display: none;
+}
 
 .p2 {
     background-color: #000;
@@ -51,6 +78,8 @@
 
 .p2 .daojishi {
     transform: scale(0);
+    width: 2.5rem;
+    height: 2.54rem;
 }
 
 .p2 .daojishi-number {
@@ -90,3 +119,11 @@
 
 
 /*p2End*/
+
+#duleisi {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}

@@ -1,2 +1,7 @@
 .active {}
-.error{}
+
+.error {}
+
+.loading .container {
+    display: none;
+}

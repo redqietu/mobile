@@ -8,13 +8,14 @@
     <meta name="format-detection" content="telephone=no">
 
     <!--common-->
-    <script src="./static/js/common/pace.min.js"></script>
-    <link rel="stylesheet" href="./static/css/common/pace.css" />
+    <!--<script src="./static/js/common/pace.min.js"></script>-->
+    <!--<link rel="stylesheet" href="./static/css/common/pace.css" />-->
     <script src="./static/js/common/pixel.js"></script>
     <link rel="stylesheet" href="./static/css/common/base.css">
     <link rel="stylesheet" href="./static/css/common/layout.css">
     <link rel="stylesheet" href="./static/css/common/animate.css">
     <link rel="stylesheet" href="./static/css/common/theme.css">
+    <link rel="stylesheet" href="./static/css/common/state.css">
     <link rel="stylesheet" href="./static/css/common/swiper.css">
     <link rel="stylesheet" href="./static/css/common/util.css">
     <!--commonEnd-->
@@ -31,7 +32,7 @@
 
 </head>
 
-<body>
+<body class="loading">
 
     <!-- weixin -->
     <section style="margin: 0 auto;width: 0px;height: 0px;overflow: hidden;">
@@ -41,26 +42,32 @@
 
     <!--content-->
     <section class="page">
-        <section class="container p1">
+        <section class="container p p1">
             <section class="wrapper">
                 <section class="block full bk-p1">
                     <section class="block icon icon-emao">
                         <img src="./static/images/common/icon/icon-emao.png" alt="">
                     </section>
+                    <div class="left">
+                        <img src="./static/images/sprite/left.png" alt="">
+                    </div>
+                    <div class="right">
+                        <img src="./static/images/sprite/right.png" alt="">
+                    </div>
                     <div id="btn-lijixiaheishou">
                         <img src="./static/images/btn/btn-lijixiaheishou.png" alt="">
                     </div>
                 </section>
             </section>
         </section>
-        <section class="container p2">
+        <section class="container p p2">
             <section class="wrapper xiaoqu blur">
                 <div class="block car">
                 </div>
             </section>
             <section class="block full absolute mengban">
             </section>
-            <section class="block full absolute">
+            <section class="block full absolute block-daojishi">
                 <div class="daojishi-container center">
                     <section class="block daojishi">
                         <img src="./static/images/sprite/daojishi.png" alt="">
@@ -83,12 +90,12 @@
 
             </section>
         </section>
-        <section class="container">
+        <section class="container hidden">
             <section class="wrapper">
                 <section class="block block-hot block_hot--active"></section>
             </section>
         </section>
-        <section class="container">
+        <section class="container hidden">
             <section class="wrapper">
                 <section class="block block-pop block-pop--active">
                     <div class="header"></div>
@@ -98,6 +105,7 @@
             </section>
         </section>
     </section>
+    <div id="duleisi"></div>
     <!--contentEnd-->
 
     <!--common-->
@@ -112,12 +120,10 @@
     <script src="./static/js/common/swiper.js"></script>
     <script src="./static/js/common/tab.js"></script>
     <script src="./static/js/common/pop.js"></script>
+    <script src="./static/js/common/TweenMax.min.js"></script>
+    <script src="./static/js/common/TimelineMax.min.js"></script>
+    <script src="./static/js/common/lufylegend-1.10.1.min.js"></script>
     <!--commonEnd-->
-
-    <!--gsap-->
-    <script src="./static/js/gsap/TweenMax.min.js"></script>
-    <script src="./static/js/gsap/TimelineMax.min.js"></script>
-    <!--gsapEnd-->
 
     <!-- single -->
     <script src="./conf.js "></script>
