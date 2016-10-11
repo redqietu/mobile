@@ -57,11 +57,18 @@ function comeIn(target, after, onComplete) {
         onComplete: onComplete
     });
     return timeline.fromTo(target, 1, {
+        'data-a': 12,
         scale: 9,
     }, {
+        'data-a': 0,
         scale: 1,
-        // onComplete: onComplete,
-        ease: Power1.easeIn,
+        ease: Power1.easeOut,
+        onUpdate: function() {
+            TweenMax.set(target, {
+                'webkitFilter': 'blur(' + target.get(0).style['data-a'] + 'px)',
+                filter: 'blur(' + target.get(0).style['data-a'] + 'px)',
+            });
+        }
     }).add(after);
 }
 
@@ -74,26 +81,11 @@ function comeIn2(target) {
 }
 
 function begin() {
-    // var carComeIn = _.partial(comeIn2, $('.car'));
     var daojishiWithmengban = _.compose(function() {
-        $('.p2 .mengban').css({
-            backgroundColor: '#000',
-            opacity: 0.4
+        TweenMax.to($('.p2 .mengban'), 8, {
+            opacity: 0.7,
+            backgroundColor: '#000'
         });
     }, _.partial(daojishi, $('.daojishi'), $('.daojishi-container'), 3));
-
-
-
-
-
-
-
     comeIn($('.p2 .xiaoqu'), comeIn2($('.car')), daojishiWithmengban);
-
-
-
-
-
-
-
 }
