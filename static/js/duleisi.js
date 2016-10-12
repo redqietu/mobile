@@ -98,7 +98,7 @@ function begin() {
 }
 
 function init() {
-    LInit(60, 'duleisi', $(window).width(), $(window).height(), gameInit);
+    LInit(60, 'duleisi', $(window).width(), $(window).height(), loading);
 }
 
 var loadData = [{
@@ -114,14 +114,14 @@ var loadData = [{
     path: './static/images/btn/btn-lijixiaheishou.png',
     name: 'btn-lijixiaheishou'
 }, {
-    path: './static/images/sprite/1.png',
-    name: '1'
+    path: './static/images/sprite/n1.png',
+    name: 'n1'
 }, {
-    path: './static/images/sprite/2.png',
-    name: '2'
+    path: './static/images/sprite/n2.png',
+    name: 'n2'
 }, {
-    path: './static/images/sprite/3.png',
-    name: '3'
+    path: './static/images/sprite/n3.png',
+    name: 'n3'
 }, {
     path: './static/images/sprite/car.png',
     name: 'car'
@@ -185,7 +185,7 @@ function lijixiaheishou() {
     });
 }
 
-function gameInit() {
+function loading() {
     var backlayer = new LSprite();
     loadingLayer = new LoadingSample4();
     addChild(backlayer);
@@ -193,6 +193,7 @@ function gameInit() {
     LLoadManage.load(loadData, function(x) {
         loadingLayer.setProgress(x);
     }, function(r) {
+        window.SPRITE = r;
         setTimeout(function() {
             backlayer.removeChild(loadingLayer);
             loadingLayer = null;
