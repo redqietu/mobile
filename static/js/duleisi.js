@@ -148,17 +148,36 @@ var loadData = [{
 function lijixiaheishou() {
     $('#btn-lijixiaheishou').on('tap', function() {
         TweenMax.to('.p1', 1, {
-            opacity: 0.1,
+            opacity: 0,
+            scale: 0,
+            ease: Back.easeInOut,
+            x: -1000,
+            y: -1000,
+            rotation: -100
+        });
+        var p2 = $('.p2').show();
+        TweenMax.fromTo(p2, 1, {
+            x: 1000,
+            y: 1000,
+            opacity: 0,
+            rotation: 100,
+
+            ease: Back.easeOut
+        }, {
+            x: 0,
+            y: 0,
+            rotation: 0,
+            opacity: 1,
             onComplete: function() {
-                $('.p2').show();
-                TweenMax.fromTo($('.p2').show(), 0.6, {
-                    opacity: 0,
-                }, {
-                    opacity: 1,
-                    ease: Back.easeOut
-                });
+
+                // TweenMax.fromTo(p2, 0.6, {
+                // }, {
+                //     ease: Back.easeOut
+                // });
                 begin();
-            }
+            },
+            // ease: SlowMo.ease.config(0.1, 0.9)
+            ease: Back.easeInOut
         });
     });
 }
