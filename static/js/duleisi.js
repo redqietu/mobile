@@ -85,7 +85,7 @@ function comeIn2(target) {
     });
 }
 
-function begin() {
+function sceneBegin() {
     var daojishiWithmengban = _.compose(function() {
         TweenMax.to($('.p2 .mengban'), 8, {
             opacity: 0.6,
@@ -93,6 +93,7 @@ function begin() {
         });
     }, _.partial(daojishi, $('.daojishi'), $('.daojishi-container'), 3, function() {
         $('#duleisi').show();
+        Lmain();
     }));
     comeIn($('.p2 .street'), comeIn2($('.car')), daojishiWithmengban);
 }
@@ -177,7 +178,7 @@ function lijixiaheishou() {
                 // }, {
                 //     ease: Back.easeOut
                 // });
-                begin();
+                sceneBegin();
             },
             // ease: SlowMo.ease.config(0.1, 0.9)
             ease: Back.easeInOut
@@ -187,20 +188,48 @@ function lijixiaheishou() {
 
 function loading() {
     var backlayer = new LSprite();
+    window.backlayer = backlayer;
     loadingLayer = new LoadingSample4();
     addChild(backlayer);
     backlayer.addChild(loadingLayer);
     LLoadManage.load(loadData, function(x) {
         loadingLayer.setProgress(x);
     }, function(r) {
-        window.SPRITE = r;
-        setTimeout(function() {
+        if (DEBUG) {
+            window.SPRITE = r;
             backlayer.removeChild(loadingLayer);
             loadingLayer = null;
-            $('#duleisi').hide();
-            $('body').removeClass('loading');
-            lijixiaheishou();
-            $('.page').css('backgroundColor', '#f7f7f7');
-        }, 100);
+            Lmain();
+        } else {
+            window.SPRITE = r;
+            setTimeout(function() {
+                backlayer.removeChild(loadingLayer);
+                loadingLayer = null;
+                $('#duleisi').hide();
+                $('body').removeClass('loading');
+                lijixiaheishou();
+                $('.page').css('backgroundColor', '#f7f7f7');
+            }, 100);
+        }
     });
+}
+
+function worldInit() {
+    LGlobal.setDebug(true);
+    LGlobal.box2d = new LBox2d();
+}
+
+function tt() {
+    var ttLayer = new LSprite;
+    backlayer.addChild(ttLayer);
+    ttLayer.addChild(new LBitmap(new LBitmapData(SPRITE.tt1)));
+    ttLayer.addBodyPolygon(100, 120, 1, 5, 0.4, 0.2);
+    var force = 500;
+    var vec = new LGlobal.box2d.b2Vec2(focus, -focus);
+    ttLayer.box2dBody.ApplyForce(vec, ttLayer.box2dBody.GetWorldCenter());
+}
+
+function Lmain() {
+    worldInit();
+    tt();
 }
