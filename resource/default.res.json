@@ -1,0 +1,120 @@
+{
+	"groups": [
+		{
+			"keys": "description_json,bk-dian_png,bk-p1_png,bk-p2_png,bk-sanshe_png,btn-lijixiaheishou_png,icon-emao_png,blank_gif,loading_gif,car_png,daojishi_png,left_png,n1_png,n2_png,n3_png,right_png,tt1_png,tt2_png,tt3_png,xtt1_png,xtt2_png,xtt3_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "bk-dian_png",
+			"type": "image",
+			"url": "assets/bk/bk-dian.png"
+		},
+		{
+			"name": "bk-p1_png",
+			"type": "image",
+			"url": "assets/bk/bk-p1.png"
+		},
+		{
+			"name": "bk-p2_png",
+			"type": "image",
+			"url": "assets/bk/bk-p2.png"
+		},
+		{
+			"name": "bk-sanshe_png",
+			"type": "image",
+			"url": "assets/bk/bk-sanshe.png"
+		},
+		{
+			"name": "btn-lijixiaheishou_png",
+			"type": "image",
+			"url": "assets/btn/btn-lijixiaheishou.png"
+		},
+		{
+			"name": "icon-emao_png",
+			"type": "image",
+			"url": "assets/common/icon/icon-emao.png"
+		},
+		{
+			"name": "blank_gif",
+			"type": "image",
+			"url": "assets/common/loading/blank.gif"
+		},
+		{
+			"name": "loading_gif",
+			"type": "image",
+			"url": "assets/common/loading/loading.gif"
+		},
+		{
+			"name": "car_png",
+			"type": "image",
+			"url": "assets/sprite/car.png"
+		},
+		{
+			"name": "daojishi_png",
+			"type": "image",
+			"url": "assets/sprite/daojishi.png"
+		},
+		{
+			"name": "left_png",
+			"type": "image",
+			"url": "assets/sprite/left.png"
+		},
+		{
+			"name": "n1_png",
+			"type": "image",
+			"url": "assets/sprite/n1.png"
+		},
+		{
+			"name": "n2_png",
+			"type": "image",
+			"url": "assets/sprite/n2.png"
+		},
+		{
+			"name": "n3_png",
+			"type": "image",
+			"url": "assets/sprite/n3.png"
+		},
+		{
+			"name": "right_png",
+			"type": "image",
+			"url": "assets/sprite/right.png"
+		},
+		{
+			"name": "tt1_png",
+			"type": "image",
+			"url": "assets/sprite/tt1.png"
+		},
+		{
+			"name": "tt2_png",
+			"type": "image",
+			"url": "assets/sprite/tt2.png"
+		},
+		{
+			"name": "tt3_png",
+			"type": "image",
+			"url": "assets/sprite/tt3.png"
+		},
+		{
+			"name": "xtt1_png",
+			"type": "image",
+			"url": "assets/sprite/xtt1.png"
+		},
+		{
+			"name": "xtt2_png",
+			"type": "image",
+			"url": "assets/sprite/xtt2.png"
+		},
+		{
+			"name": "xtt3_png",
+			"type": "image",
+			"url": "assets/sprite/xtt3.png"
+		}
+	]
+}
