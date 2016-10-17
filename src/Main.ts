@@ -154,12 +154,44 @@ class Main extends egret.DisplayObjectContainer {
         this.addChild(scene);
         btn.touchEnabled=true;
         btn.addEventListener( egret.TouchEvent.TOUCH_TAP, ()=>{
-                
+                TweenMax.to(scene,1,{
+                    x:-1000,
+                    y:-1000,
+                    scale:0,
+                    opacity:0,
+                    rotation:-100,
+                    ease: Back.easeInOut,
+                    onComplete:()=>{
+                        this.removeChild(scene);
+                    }
+                });
+                this.createGameScene2();
+                this.setChildIndex(scene,scene.numChildren-1);
             }, this,true);
     }
 
     private createGameScene2(){
+        var scene:egret.DisplayObjectContainer=new egret.DisplayObjectContainer;
+        var bg:egret.Bitmap=this.createBitmapByName('bk-p2_png');
+        this.addChild(bg);
+        TweenMax.fromTo(bg,1,{
+            x: 1000,
+            y: 1000,
+            opacity: 0,
+            rotation: 100,
+            ease: Back.easeOut,
 
+        },{
+            x: 0,
+            y: 0,
+            rotation: 0,
+            opacity: 1,
+            onComplete: ()=>{
+                new Pp2(scene);
+            },
+            // ease: SlowMo.ease.config(0.1, 0.9)
+            ease: Back.easeInOut,
+        });
 
     }
     /**

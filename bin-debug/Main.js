@@ -104,6 +104,7 @@ var Main = (function (_super) {
         this.createGameScene1();
     };
     p.createGameScene1 = function () {
+        var _this = this;
         var scene = new egret.DisplayObjectContainer;
         var bg0 = new egret.Shape;
         var stageW = this.stage.stageWidth;
@@ -135,10 +136,42 @@ var Main = (function (_super) {
         this.addChild(scene);
         btn.touchEnabled = true;
         btn.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            window['scene'] = scene;
+            TweenMax.to(scene, 1, {
+                x: -1000,
+                y: -1000,
+                scale: 0,
+                opacity: 0,
+                rotation: -100,
+                ease: Back.easeInOut,
+                onComplete: function () {
+                    _this.removeChild(scene);
+                }
+            });
+            _this.createGameScene2();
+            _this.setChildIndex(scene, scene.numChildren - 1);
         }, this, true);
     };
     p.createGameScene2 = function () {
+        var scene = new egret.DisplayObjectContainer;
+        var bg = this.createBitmapByName('bk-p2_png');
+        this.addChild(bg);
+        TweenMax.fromTo(bg, 1, {
+            x: 1000,
+            y: 1000,
+            opacity: 0,
+            rotation: 100,
+            ease: Back.easeOut,
+        }, {
+            x: 0,
+            y: 0,
+            rotation: 0,
+            opacity: 1,
+            onComplete: function () {
+                new Pp2(scene);
+            },
+            // ease: SlowMo.ease.config(0.1, 0.9)
+            ease: Back.easeInOut,
+        });
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

@@ -9,9 +9,11 @@ var game_file_list = [
 	"libs/modules/res/res.js",
 	"libs/modules/tween/tween.js",
 	"libs/modules/egret3d/egret3d.js",
-	"libs/TweenMax.js",
+	"libs/static/tween/TweenMax.js",
+	"libs/static/physics/p2.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
+	"bin-debug/pp2.js",
 	//----auto game_file_list end----
 ];
 
@@ -41,7 +43,7 @@ egret_native.egretStart = function () {
         //----auto option start----
 		entryClassName: "Main",
 		frameRate: 30,
-		scaleMode: "showAll",
+		scaleMode: "fixedWidth",
 		contentWidth: 750,
 		contentHeight: 1136,
 		showPaintRect: false,
