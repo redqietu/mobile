@@ -154,7 +154,7 @@ var Main = (function (_super) {
     p.createGameScene2 = function () {
         var scene = new egret.DisplayObjectContainer;
         var bg = this.createBitmapByName('bk-p2_png');
-        this.addChild(bg);
+        scene.addChild(bg);
         TweenMax.fromTo(bg, 1, {
             x: 1000,
             y: 1000,
@@ -172,6 +172,7 @@ var Main = (function (_super) {
             // ease: SlowMo.ease.config(0.1, 0.9)
             ease: Back.easeInOut,
         });
+        this.addChild(scene);
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

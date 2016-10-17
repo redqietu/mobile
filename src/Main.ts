@@ -173,7 +173,7 @@ class Main extends egret.DisplayObjectContainer {
     private createGameScene2(){
         var scene:egret.DisplayObjectContainer=new egret.DisplayObjectContainer;
         var bg:egret.Bitmap=this.createBitmapByName('bk-p2_png');
-        this.addChild(bg);
+        scene.addChild(bg);
         TweenMax.fromTo(bg,1,{
             x: 1000,
             y: 1000,
@@ -192,6 +192,7 @@ class Main extends egret.DisplayObjectContainer {
             // ease: SlowMo.ease.config(0.1, 0.9)
             ease: Back.easeInOut,
         });
+        this.addChild(scene);
 
     }
     /**
