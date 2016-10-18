@@ -799,8 +799,8 @@ declare module p2 {
         /**
          * 与每个形状对应的显示对象
          */
-        displays: egret.Bitmap[];
-
+        displays: egret.DisplayObject[];
+        userData:egret.DisplayObject;
         /**
          * 设置刚体总密度
          * @method setDensity

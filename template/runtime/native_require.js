@@ -13,7 +13,8 @@ var game_file_list = [
 	"libs/static/physics/p2.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
-	"bin-debug/pp2.js",
+	"bin-debug/p2app.js",
+	"bin-debug/p2DebugDraw.js",
 	//----auto game_file_list end----
 ];
 
@@ -43,7 +44,7 @@ egret_native.egretStart = function () {
         //----auto option start----
 		entryClassName: "Main",
 		frameRate: 30,
-		scaleMode: "fixedWidth",
+		scaleMode: "noBorder",
 		contentWidth: 750,
 		contentHeight: 1136,
 		showPaintRect: false,
