@@ -1,19 +1,21 @@
 class P2App{
-    static world:p2.World=new p2.World({
+    private static world:p2.World=new p2.World({
             gravity:[0,0.6]
         });
-    world=P2App.world;    
-    container:egret.DisplayObjectContainer;
-    factor:number=50;
-    stageWidth=egret.MainContext.instance.stage.stageWidth;
-    stageHeight=egret.MainContext.instance.stage.stageHeight;
+    private world=P2App.world;    
+    private container:egret.DisplayObjectContainer;
+    private factor:number=50;
+    private stageWidth=egret.MainContext.instance.stage.stageWidth;
+    private stageHeight=egret.MainContext.instance.stage.stageHeight;
+
     constructor(container:egret.DisplayObjectContainer){
         this.container=container;
         P2App.world.sleepMode = p2.World.BODY_SLEEPING;
         this.createGround();
         this.loop();
     }
-    createDurex(displayName){
+
+    private createDurex(displayName){
         var display=this.createBitmapByName(displayName);
         
         display.x=Math.random()*(this.stageWidth-84);
@@ -35,7 +37,8 @@ class P2App{
         this.world.addBody(body);
         this.container.addChild(display);
     }
-    createGround(){
+
+    private createGround(){
         var planeShape:p2.Plane = new p2.Plane({
         });
         var planeBody:p2.Body = new p2.Body({
@@ -45,13 +48,15 @@ class P2App{
         planeBody.addShape(planeShape);
         this.world.addBody(planeBody);
     }
-    createBitmapByName(name){
+
+    private createBitmapByName(name){
         var result = new egret.Bitmap();
         var texture:egret.Texture = RES.getRes(name);
         result.texture = texture;
         return result;        
     }
-    loop(){
+    
+    private loop(){
         let frame=function(dt) {
             let world=P2App.world;
             world.step(dt / 1000);
