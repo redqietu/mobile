@@ -187,7 +187,7 @@ class Main extends egret.DisplayObjectContainer {
             rotation: 0,
             opacity: 1,
             onComplete: ()=>{
-                new P2App(scene);
+                P2App.getInstance(scene);
             },
             // ease: SlowMo.ease.config(0.1, 0.9)
             ease: Back.easeInOut,
