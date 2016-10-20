@@ -173,7 +173,36 @@ class Main extends egret.DisplayObjectContainer {
     private createGameScene2(){
         var scene:egret.DisplayObjectContainer=new egret.DisplayObjectContainer;
         var bg:egret.Bitmap=this.createBitmapByName('bk-p2_png');
+        var car:egret.Bitmap=this.createBitmapByName('car_png');
+        var mask:egret.Shape=new egret.Shape();
+        var [djs1,djs2,djs3]=[
+            this.createBitmapByName('n3_png'),
+            this.createBitmapByName('n2_png'),
+            this.createBitmapByName('n1_png'),
+        ];
+        djs1.x=350;
+        djs1.y=499;
+        djs2.x=350;
+        djs2.y=499;
+        djs3.x=350;
+        djs3.y=499;
+        djs1.anchorOffsetX=43;
+        djs1.anchorOffsetY=43;
+        djs2.anchorOffsetX=43;
+        djs2.anchorOffsetY=43;
+        djs3.anchorOffsetX=43;
+        djs3.anchorOffsetY=43;
+        
+        
+        mask.graphics.beginFill(0x000,1);
+        mask.graphics.drawRect(0,0,this.stage.width,this.stage.height);
+        mask.graphics.endFill();
         scene.addChild(bg);
+        scene.addChild(car);
+        scene.addChild(mask);
+        scene.addChild(djs1);
+        scene.addChild(djs2);
+        scene.addChild(djs3);
         var timeline=new TimelineMax({
             onComplete: ()=>{
                 P2App.getInstance(scene);
@@ -206,7 +235,36 @@ class Main extends egret.DisplayObjectContainer {
             scaleY:1,
             anchorOffsetX:0,
             anchorOffsetY:0,
-        });
+        }).fromTo(car,1,{
+            x:-400,
+            y:40
+        },{
+           x:0,
+           y:0 
+        }).fromTo(mask,0.2,{
+            alpha:0
+        },{
+            alpha:0.7
+        }).staggerFromTo([djs1,djs2,djs3],1,{
+            alpha:0,
+            scaleX:1.6,
+            scaleY:1.6,
+            ease:Power4.easeInOut
+        },{
+            alpha:1,
+            scaleX:0.6,
+            scaleY:0.6,
+            ease:Power4.easeInOut, 
+            onComplete: function() {
+                TweenMax.to(this.target, 0.2, {
+                    alpha:0,
+                    onComplete:function(){
+                        scene.removeChild(this.target);
+                    }
+                });
+            },
+        },1);
+
         this.addChild(scene);
 
     }
