@@ -160,7 +160,7 @@ var Main = (function (_super) {
                 P2App.getInstance(scene);
             },
         });
-        timeline.fromTo(bg, 1.4, {
+        timeline.fromTo(scene, 1.4, {
             x: 1000,
             y: 1000,
             alpha: 0,
@@ -177,7 +177,7 @@ var Main = (function (_super) {
             ease: Back.easeInOut,
             scaleX: 9,
             scaleY: 9,
-        }).fromTo(bg, 1, {
+        }).fromTo(scene, 1, {
             scaleX: 9,
             scaleY: 9,
             data_filter: 1,

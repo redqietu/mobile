@@ -81,9 +81,7 @@ var P2App = (function () {
     };
     p.createGround = function () {
         var planeShape = new p2.Plane({});
-        var planeBody = new p2.Body({
-            position: [0, 1]
-        });
+        var planeBody = new p2.Body({});
         planeBody.addShape(planeShape);
         this.world.addBody(planeBody);
     };

@@ -179,7 +179,7 @@ class Main extends egret.DisplayObjectContainer {
                 P2App.getInstance(scene);
             },
         });
-        timeline.fromTo(bg,1.4,{
+        timeline.fromTo(scene,1.4,{
             x: 1000,
             y: 1000,
             alpha: 0,
@@ -196,7 +196,7 @@ class Main extends egret.DisplayObjectContainer {
             ease: Back.easeInOut,
             scaleX:9,
             scaleY:9,
-        }).fromTo(bg,1,{
+        }).fromTo(scene,1,{
             scaleX:9,
             scaleY:9,
             data_filter:1,

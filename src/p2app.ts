@@ -95,7 +95,7 @@ class P2App{
         });
         var planeBody:p2.Body = new p2.Body({
             
-            position:[0,1]
+            // position:[0,1]
         });
         planeBody.addShape(planeShape);
         this.world.addBody(planeBody);
