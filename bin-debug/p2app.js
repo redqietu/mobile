@@ -55,7 +55,7 @@ var P2App = (function () {
             mass: 100 * Math.random(),
             // position:[display.x/this.factor,display.y/this.factor],
             position: [display.x / this.factor, display.y / this.factor],
-            // angle:180*Math.random()-360,
+            angle: (180 * Math.random() - 360) * 0.01,
             // velocity: [ 0, Math.random()*50-100],
             // velocity: [ 0, 100],
             force: [0, -100],
@@ -81,7 +81,12 @@ var P2App = (function () {
     };
     p.createGround = function () {
         var planeShape = new p2.Plane({});
-        var planeBody = new p2.Body({});
+        var planeBody = new p2.Body({
+            mass: 100,
+            position: [0, (this.stageHeight - 100) / this.factor],
+            angle: Math.PI
+        });
+        // planeBody.angle=Math.PI;
         planeBody.addShape(planeShape);
         this.world.addBody(planeBody);
     };
