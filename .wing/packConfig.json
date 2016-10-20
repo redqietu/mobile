@@ -1,0 +1,8 @@
+{
+    "maxImageWidth": 2014,
+    "maxImageHeight": 2014,
+    "defaultResPath": "e:\\dev\\code\\pro\\src\\qrdls\\mkp\\durex3\\resource\\default.res.json",
+    "packGroups": {
+        "preload": true
+    }
+}

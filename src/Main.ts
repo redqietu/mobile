@@ -174,23 +174,36 @@ class Main extends egret.DisplayObjectContainer {
         var scene:egret.DisplayObjectContainer=new egret.DisplayObjectContainer;
         var bg:egret.Bitmap=this.createBitmapByName('bk-p2_png');
         scene.addChild(bg);
-        TweenMax.fromTo(bg,1,{
+        var timeline=new TimelineMax({
+            onComplete: ()=>{
+                P2App.getInstance(scene);
+            },
+        });
+        timeline.fromTo(bg,1.4,{
             x: 1000,
             y: 1000,
-            opacity: 0,
+            alpha: 0,
             rotation: 100,
             ease: Back.easeOut,
-
+            scaleX:9,
+            scaleY:9
         },{
             x: 0,
             y: 0,
             rotation: 0,
-            opacity: 1,
-            onComplete: ()=>{
-                P2App.getInstance(scene);
-            },
+            alpha: 1,
             // ease: SlowMo.ease.config(0.1, 0.9)
             ease: Back.easeInOut,
+            scaleX:9,
+            scaleY:9,
+        }).fromTo(bg,1,{
+            scaleX:9,
+            scaleY:9,
+            data_filter:1,
+        },{
+            scaleX:1,
+            scaleY:1,
+            data_filter:0,
         });
         this.addChild(scene);
 
