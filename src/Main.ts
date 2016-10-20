@@ -182,17 +182,17 @@ class Main extends egret.DisplayObjectContainer {
         scene.anchorOffsetX=this.stage.width/2;
         scene.anchorOffsetY=this.stage.height/2;
         timeline.fromTo(scene,1.4,{
-            x: 1000,
-            y: 1000,
+            x: 0,
+            y: 0,
             alpha: 0,
-            rotation: 100,
+            // rotation: 100,
             ease: Back.easeOut,
             scaleX:9,
             scaleY:9
         },{
             x: 0,
             y: 0,
-            rotation: 0,
+            // rotation: 0,
             alpha: 1,
             // ease: SlowMo.ease.config(0.1, 0.9)
             ease: Back.easeInOut,
