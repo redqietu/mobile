@@ -179,6 +179,8 @@ class Main extends egret.DisplayObjectContainer {
                 P2App.getInstance(scene);
             },
         });
+        scene.anchorOffsetX=this.stage.width/2;
+        scene.anchorOffsetY=this.stage.height/2;
         timeline.fromTo(scene,1.4,{
             x: 1000,
             y: 1000,
@@ -199,11 +201,11 @@ class Main extends egret.DisplayObjectContainer {
         }).fromTo(scene,1,{
             scaleX:9,
             scaleY:9,
-            data_filter:1,
         },{
             scaleX:1,
             scaleY:1,
-            data_filter:0,
+            anchorOffsetX:0,
+            anchorOffsetY:0,
         });
         this.addChild(scene);
 
