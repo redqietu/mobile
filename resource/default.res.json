@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,bk-dian_png,bk-p1_png,bk-p2_png,bk-sanshe_png,btn-lijixiaheishou_png,icon-emao_png,blank_gif,loading_gif,car_png,daojishi_png,left_png,n1_png,n2_png,n3_png,right_png,tt1_png,tt2_png,tt3_png,xtt1_png,xtt2_png,xtt3_png",
+			"keys": "description_json,bk-dian_png,bk-p1_png,bk-p2_png,bk-sanshe_png,btn-lijixiaheishou_png,icon-emao_png,blank_gif,loading_gif,car_png,daojishi_png,left_png,n1_png,n2_png,n3_png,right_png,tt1_png,tt2_png,tt3_png,xtt1_png,xtt2_png,xtt3_png,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png",
 			"name": "preload"
 		}
 	],
@@ -115,6 +115,46 @@
 			"name": "xtt3_png",
 			"type": "image",
 			"url": "assets/sprite/xtt3.png"
+		},
+		{
+			"name": "1_png",
+			"type": "image",
+			"url": "assets/sprite/1.png"
+		},
+		{
+			"name": "2_png",
+			"type": "image",
+			"url": "assets/sprite/2.png"
+		},
+		{
+			"name": "3_png",
+			"type": "image",
+			"url": "assets/sprite/3.png"
+		},
+		{
+			"name": "4_png",
+			"type": "image",
+			"url": "assets/sprite/4.png"
+		},
+		{
+			"name": "5_png",
+			"type": "image",
+			"url": "assets/sprite/5.png"
+		},
+		{
+			"name": "6_png",
+			"type": "image",
+			"url": "assets/sprite/6.png"
+		},
+		{
+			"name": "7_png",
+			"type": "image",
+			"url": "assets/sprite/7.png"
+		},
+		{
+			"name": "8_png",
+			"type": "image",
+			"url": "assets/sprite/8.png"
 		}
 	]
 }

@@ -1,23 +1,24 @@
-var P2App = (function () {
-    function P2App(container) {
+var P2Scene = (function () {
+    function P2Scene(container, stage) {
         this.bodyType = p2.Body.DYNAMIC;
-        this.world = P2App.world;
+        this.world = P2Scene.world;
         this.factor = 50;
         this.stageWidth = egret.MainContext.instance.stage.stageWidth;
         this.stageHeight = egret.MainContext.instance.stage.stageHeight;
         this.scoreLabel = new egret.TextField;
         this.deadlineLabel = new egret.TextField;
         this.container = container;
-        P2App.world.sleepMode = p2.World.BODY_SLEEPING;
+        this.stage = stage;
+        P2Scene.world.sleepMode = p2.World.BODY_SLEEPING;
         this.createScore();
         this.createDeadline();
         this.createGround();
         this.loop();
     }
-    var d = __define,c=P2App,p=c.prototype;
+    var d = __define,c=P2Scene,p=c.prototype;
     p.createScore = function () {
         this.container.addChild(this.scoreLabel);
-        this.setScore(P2App.score = 0);
+        this.setScore(P2Scene.score = 0);
         this.scoreLabel.x = this.stageWidth - 200;
         this.scoreLabel.y = 30;
         this.scoreLabel.textColor = 0xe01717;
@@ -43,8 +44,8 @@ var P2App = (function () {
             this.deadlineLabel.text = "00:" + time;
         }
     };
-    P2App.getInstance = function (scene) {
-        return P2App.instance ? P2App.instance : new P2App(scene);
+    P2Scene.getInstance = function (scene, stage) {
+        return P2Scene.instance ? P2Scene.instance : new P2Scene(scene, stage);
     };
     p.createDurex = function (event, displayName, another) {
         var display = this.createBitmapByName(displayName, another);
@@ -61,7 +62,7 @@ var P2App = (function () {
             force: [0, -100],
             // gravityScale:1*Math.random(),
             density: 10 * Math.random(),
-            damping: P2App.damping,
+            damping: P2Scene.damping,
             angularVelocity: 10,
             type: this.bodyType,
         });
@@ -73,7 +74,7 @@ var P2App = (function () {
         display.__body = body;
         display.addEventListener(egret.TouchEvent.TOUCH_TAP, event, {
             display: display,
-            p2app: this
+            P2Scene: this
         });
         display.touchEnabled = true;
         this.world.addBody(body);
@@ -101,13 +102,13 @@ var P2App = (function () {
     p.loop = function () {
         var i = 0;
         var onTap = function (e) {
-            this.display.__body.userData = this.p2app.createBitmapByName(this.display.__anotherTextureName);
-            this.p2app.container.removeChild(this.display);
-            this.p2app.container.addChild(this.display.__body.userData);
-            this.p2app.setScore(++P2App.score);
+            this.display.__body.userData = this.P2Scene.createBitmapByName(this.display.__anotherTextureName);
+            this.P2Scene.container.removeChild(this.display);
+            this.P2Scene.container.addChild(this.display.__body.userData);
+            this.P2Scene.setScore(++P2Scene.score);
         };
         var frame = function (dt) {
-            var world = P2App.world;
+            var world = P2Scene.world;
             world.step(dt / 1000);
             var stageHeight = egret.MainContext.instance.stage.stageHeight;
             var l = world.bodies.length;
@@ -126,13 +127,24 @@ var P2App = (function () {
             var n = this.random(1, 3);
             i++;
             if (i % 5 === 0) {
-                this.setDeadline(--P2App.deadline);
+                this.setDeadline(--P2Scene.deadline);
             }
             this.createDurex(onTap, "tt" + n + "_png", "xtt" + n + "_png");
         }, this);
         timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function (e) {
+            var _this = this;
             egret.Ticker.getInstance().unregister(frame, null);
-            // this.setDeadline(--P2App.deadline);
+            TweenMax.to(this.container, 1, {
+                x: -1000,
+                y: -1000,
+                scale: 0,
+                opacity: 0,
+                rotation: -100,
+                ease: Back.easeInOut,
+                onComplete: function () {
+                    new P3Scene(P3Scene.scene, _this.stage);
+                }
+            });
         }, this);
         timer.start();
     };
@@ -141,14 +153,14 @@ var P2App = (function () {
         var Rand = Math.random();
         return (Min + Math.round(Rand * Range));
     };
-    P2App.damping = 0.5;
-    P2App.gravity = [0, 9];
-    P2App.world = new p2.World({
-        gravity: P2App.gravity
+    P2Scene.damping = 0.5;
+    P2Scene.gravity = [0, 9];
+    P2Scene.world = new p2.World({
+        gravity: P2Scene.gravity
     });
-    P2App.score = 0;
-    P2App.deadline = 60;
-    return P2App;
+    P2Scene.score = 0;
+    P2Scene.deadline = 60;
+    return P2Scene;
 }());
-egret.registerClass(P2App,'P2App');
-//# sourceMappingURL=p2app.js.map
+egret.registerClass(P2Scene,'P2Scene');
+//# sourceMappingURL=p2scene.js.map

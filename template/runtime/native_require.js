@@ -13,8 +13,8 @@ var game_file_list = [
 	"libs/static/physics/p2.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
-	"bin-debug/p2app.js",
-	"bin-debug/p2DebugDraw.js",
+	"bin-debug/p2scene.js",
+	"bin-debug/p3scene.js",
 	//----auto game_file_list end----
 ];
 

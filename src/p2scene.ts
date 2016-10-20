@@ -1,14 +1,15 @@
-class P2App{
-    private static instance:P2App;
+class P2Scene{
+    private static instance:P2Scene;
     private static damping:number=0.5;
     private static gravity:[number,number]=[0,9];
     private static world:p2.World=new p2.World({
-            gravity:P2App.gravity
+            gravity:P2Scene.gravity
         });
+    private stage;
     static score:number=0;
     static deadline:number=60;
     private bodyType=p2.Body.DYNAMIC;
-    private world=P2App.world;    
+    private world=P2Scene.world;    
     private container:egret.DisplayObjectContainer;
     private factor:number=50;
     private stageWidth=egret.MainContext.instance.stage.stageWidth;
@@ -16,9 +17,10 @@ class P2App{
     private scoreLabel=new egret.TextField;
     private deadlineLabel=new egret.TextField;
 
-    constructor(container:egret.DisplayObjectContainer){
+    constructor(container:egret.DisplayObjectContainer,stage){
         this.container=container;
-        P2App.world.sleepMode = p2.World.BODY_SLEEPING;
+        this.stage=stage;
+        P2Scene.world.sleepMode = p2.World.BODY_SLEEPING;
         this.createScore();
         this.createDeadline();
         this.createGround();
@@ -27,7 +29,7 @@ class P2App{
     private createScore(){
         
         this.container.addChild(this.scoreLabel);
-        this.setScore(P2App.score=0);
+        this.setScore(P2Scene.score=0);
         this.scoreLabel.x=this.stageWidth-200;
         this.scoreLabel.y=30;
         this.scoreLabel.textColor=0xe01717;
@@ -52,8 +54,8 @@ class P2App{
             this.deadlineLabel.text=`00:${time}`;
         }
     }
-    static getInstance(scene){
-        return P2App.instance?P2App.instance:new P2App(scene);
+    static getInstance(scene,stage){
+        return P2Scene.instance?P2Scene.instance:new P2Scene(scene,stage);
     }
 
     private createDurex(event,displayName,another){
@@ -71,7 +73,7 @@ class P2App{
             force:[0,-100],
             // gravityScale:1*Math.random(),
             density:10*Math.random(),
-            damping:P2App.damping,
+            damping:P2Scene.damping,
             angularVelocity:10,
             type:this.bodyType,
         });
@@ -83,7 +85,7 @@ class P2App{
         (<egret.Bitmap>display).__body=body;
         display.addEventListener(egret.TouchEvent.TOUCH_TAP,event,{
             display:display,
-            p2app:this
+            P2Scene:this
         });
         display.touchEnabled=true;
         this.world.addBody(body);
@@ -116,13 +118,13 @@ class P2App{
     private loop(){
         let i=0;
         let onTap=function (e){
-            this.display.__body.userData=this.p2app.createBitmapByName(this.display.__anotherTextureName);
-            this.p2app.container.removeChild(this.display);
-            this.p2app.container.addChild(this.display.__body.userData);
-            this.p2app.setScore(++P2App.score);
+            this.display.__body.userData=this.P2Scene.createBitmapByName(this.display.__anotherTextureName);
+            this.P2Scene.container.removeChild(this.display);
+            this.P2Scene.container.addChild(this.display.__body.userData);
+            this.P2Scene.setScore(++P2Scene.score);
         }
         let frame=function(dt) {
-            let world=P2App.world;
+            let world=P2Scene.world;
             world.step(dt / 1000);
             var stageHeight: number = egret.MainContext.instance.stage.stageHeight;
             var l = world.bodies.length;
@@ -141,13 +143,23 @@ class P2App{
             let n=this.random(1,3);
             i++;
             if(i%5===0){
-                this.setDeadline(--P2App.deadline);
+                this.setDeadline(--P2Scene.deadline);
             }
             this.createDurex(onTap,`tt${n}_png`,`xtt${n}_png`);
         },this);
         timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,function(e){
             egret.Ticker.getInstance().unregister(frame,null);
-            // this.setDeadline(--P2App.deadline);
+            TweenMax.to(this.container,1,{
+                    x:-1000,
+                    y:-1000,
+                    scale:0,
+                    opacity:0,
+                    rotation:-100,
+                    ease: Back.easeInOut,
+                    onComplete:()=>{
+                        new P3Scene(P3Scene.scene,this.stage);
+                    }
+                })
         },this);
         timer.start();
     }

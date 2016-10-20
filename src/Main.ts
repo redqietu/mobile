@@ -165,12 +165,15 @@ class Main extends egret.DisplayObjectContainer {
                         this.removeChild(scene);
                     }
                 });
-                this.createGameScene2();
+                // this.createGameScene2();
+                this.createGameScene3();
                 this.setChildIndex(scene,scene.numChildren-1);
             }, this,true);
     }
 
     private createGameScene2(){
+        
+        // this.stage.removeChild(scene);
         var scene:egret.DisplayObjectContainer=new egret.DisplayObjectContainer;
         var bg:egret.Bitmap=this.createBitmapByName('bk-p2_png');
         var car:egret.Bitmap=this.createBitmapByName('car_png');
@@ -205,11 +208,12 @@ class Main extends egret.DisplayObjectContainer {
         scene.addChild(djs3);
         var timeline=new TimelineMax({
             onComplete: ()=>{
-                P2App.getInstance(scene);
+                P2Scene.getInstance(scene,this.stage);
             },
         });
         scene.anchorOffsetX=this.stage.width/2;
         scene.anchorOffsetY=this.stage.height/2;
+
         timeline.fromTo(scene,1.4,{
             x: 0,
             y: 0,
@@ -267,6 +271,11 @@ class Main extends egret.DisplayObjectContainer {
 
         this.addChild(scene);
 
+    }
+
+    private createGameScene3(){
+        
+        new P3Scene(P3Scene.scene,this.stage);
     }
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

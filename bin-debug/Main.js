@@ -147,11 +147,14 @@ var Main = (function (_super) {
                     _this.removeChild(scene);
                 }
             });
-            _this.createGameScene2();
+            // this.createGameScene2();
+            _this.createGameScene3();
             _this.setChildIndex(scene, scene.numChildren - 1);
         }, this, true);
     };
     p.createGameScene2 = function () {
+        var _this = this;
+        // this.stage.removeChild(scene);
         var scene = new egret.DisplayObjectContainer;
         var bg = this.createBitmapByName('bk-p2_png');
         var car = this.createBitmapByName('car_png');
@@ -184,7 +187,7 @@ var Main = (function (_super) {
         scene.addChild(djs3);
         var timeline = new TimelineMax({
             onComplete: function () {
-                P2App.getInstance(scene);
+                P2Scene.getInstance(scene, _this.stage);
             },
         });
         scene.anchorOffsetX = this.stage.width / 2;
@@ -244,6 +247,9 @@ var Main = (function (_super) {
             },
         }, 1);
         this.addChild(scene);
+    };
+    p.createGameScene3 = function () {
+        new P3Scene(P3Scene.scene, this.stage);
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
