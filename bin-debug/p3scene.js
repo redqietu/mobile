@@ -76,7 +76,10 @@ var P3Scene = (function () {
         }, this);
         this.btn2.touchEnabled = true;
         this.btn2.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            P2Scene.getInstance(P2Scene.scene, this.stage);
+            this.stage.removeChildren();
+            P2Scene.deadline = 60;
+            P2Scene.scene = new egret.DisplayObjectContainer;
+            new P2Scene(P2Scene.scene, this.stage);
         }, this);
         this.btn3.touchEnabled = true;
         this.btn3.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
@@ -93,4 +96,4 @@ var P3Scene = (function () {
     return P3Scene;
 }());
 egret.registerClass(P3Scene,'P3Scene');
-//# sourceMappingURL=p3scene.js.map
+//# sourceMappingURL=p3Scene.js.map

@@ -102,7 +102,10 @@ class P3Scene{
         },this);
         this.btn2.touchEnabled=true;
         this.btn2.addEventListener(egret.TouchEvent.TOUCH_TAP,function(){
-            P2Scene.getInstance(P2Scene.scene,this.stage);
+            this.stage.removeChildren();
+            P2Scene.deadline=60;
+            P2Scene.scene=new egret.DisplayObjectContainer;
+            new P2Scene(P2Scene.scene,this.stage);
         },this);
         this.btn3.touchEnabled=true;
         this.btn3.addEventListener(egret.TouchEvent.TOUCH_TAP,function(){

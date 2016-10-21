@@ -14,7 +14,7 @@ var game_file_list = [
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/p2scene.js",
-	"bin-debug/p3scene.js",
+	"bin-debug/p3Scene.js",
 	//----auto game_file_list end----
 ];
 

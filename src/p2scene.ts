@@ -7,6 +7,7 @@ class P2Scene{
         });
     private stage;
     static scene=new egret.DisplayObjectContainer;
+    private scene=P2Scene.scene;
     static score:number=0;
     static deadline:number=60;
     private bodyType=p2.Body.DYNAMIC;
@@ -17,15 +18,21 @@ class P2Scene{
     private stageHeight=egret.MainContext.instance.stage.stageHeight;
     private scoreLabel=new egret.TextField;
     private deadlineLabel=new egret.TextField;
+    private car;
+    private mask;
+    private djs1;
+    private djs2;
+    private djs3;
 
     constructor(container:egret.DisplayObjectContainer,stage){
         this.container=container;
         this.stage=stage;
+        this.createScene();
         P2Scene.world.sleepMode = p2.World.BODY_SLEEPING;
         this.createScore();
+        this.show(()=>this.loop());
         this.createDeadline();
         this.createGround();
-        this.loop();
     }
     private createScore(){
         
@@ -169,5 +176,125 @@ class P2Scene{
         var Range = Max - Min;   
         var Rand = Math.random();   
         return(Min + Math.round(Rand * Range));   
+    }
+
+    private createScene(){
+        
+        // this.stage.removeChild(scene);
+        // P2Scene.scene=new egret.DisplayObjectContainer;
+        var scene:egret.DisplayObjectContainer=P2Scene.scene;
+        scene.removeChildren();
+        scene.x=0;
+        scene.y=0;
+        var bg:egret.Bitmap=this.createBitmapByName('bk-p2_png');
+        var car:egret.Bitmap=this.createBitmapByName('car_png');
+        var mask:egret.Shape=new egret.Shape();
+        var [djs1,djs2,djs3]=[
+            this.createBitmapByName('n3_png'),
+            this.createBitmapByName('n2_png'),
+            this.createBitmapByName('n1_png'),
+        ];
+        djs1.x=370;
+        djs1.y=499;
+        djs2.x=370;
+        djs2.y=499;
+        djs3.x=370;
+        djs3.y=499;
+        djs1.anchorOffsetX=43;
+        djs1.anchorOffsetY=43;
+        djs2.anchorOffsetX=43;
+        djs2.anchorOffsetY=43;
+        djs3.anchorOffsetX=43;
+        djs3.anchorOffsetY=43;
+        
+        
+        mask.graphics.beginFill(0x000,1);
+        mask.graphics.drawRect(0,0,this.stage.width,this.stage.height);
+        mask.graphics.endFill();
+        scene.addChild(bg);
+        scene.addChild(car);
+        scene.addChild(mask);
+        scene.addChild(djs1);
+        scene.addChild(djs2);
+        scene.addChild(djs3);
+
+        this.stage.addChild(scene);
+        this.car=car;
+        this.mask=mask;
+        this.djs1=djs1;
+        this.djs2=djs2;
+        this.djs3=djs3;
+
+    }
+
+    private show(onComplete){
+        var scene=this.scene;
+        var car=this.car;
+        var mask=this.mask;
+        var djs1=this.djs1;
+        var djs2=this.djs2;
+        var djs3=this.djs3;
+        var timeline=new TimelineMax({
+            onComplete: ()=>{
+                onComplete();
+            },
+        });
+        scene.anchorOffsetX=this.stage.width/2;
+        scene.anchorOffsetY=this.stage.height/2;
+
+        timeline.fromTo(scene,1.4,{
+            x: 0,
+            y: 0,
+            alpha: 0,
+            // rotation: 100,
+            ease: Back.easeOut,
+            scaleX:9,
+            scaleY:9
+        },{
+            x: 0,
+            y: 0,
+            // rotation: 0,
+            alpha: 1,
+            // ease: SlowMo.ease.config(0.1, 0.9)
+            ease: Back.easeInOut,
+            scaleX:9,
+            scaleY:9,
+        }).fromTo(scene,1,{
+            scaleX:9,
+            scaleY:9,
+        },{
+            scaleX:1,
+            scaleY:1,
+            anchorOffsetX:0,
+            anchorOffsetY:0,
+        }).fromTo(car,1,{
+            x:-400,
+            y:40
+        },{
+           x:0,
+           y:0 
+        }).fromTo(mask,0.2,{
+            alpha:0
+        },{
+            alpha:0.7
+        }).staggerFromTo([djs1,djs2,djs3],1,{
+            alpha:0,
+            scaleX:1.6,
+            scaleY:1.6,
+            ease:Power4.easeInOut
+        },{
+            alpha:1,
+            scaleX:0.6,
+            scaleY:0.6,
+            ease:Power4.easeInOut, 
+            onComplete: function() {
+                TweenMax.to(this.target, 0.2, {
+                    alpha:0,
+                    onComplete:function(){
+                        scene.removeChild(this.target);
+                    }
+                });
+            },
+        },1);
     }
 }
