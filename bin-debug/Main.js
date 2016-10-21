@@ -147,15 +147,15 @@ var Main = (function (_super) {
                     _this.removeChild(scene);
                 }
             });
-            // this.createGameScene2();
-            _this.createGameScene3();
+            _this.createGameScene2();
+            // this.createGameScene3();
             _this.setChildIndex(scene, scene.numChildren - 1);
         }, this, true);
     };
     p.createGameScene2 = function () {
         var _this = this;
         // this.stage.removeChild(scene);
-        var scene = new egret.DisplayObjectContainer;
+        var scene = P2Scene.scene;
         var bg = this.createBitmapByName('bk-p2_png');
         var car = this.createBitmapByName('car_png');
         var mask = new egret.Shape();
@@ -164,11 +164,11 @@ var Main = (function (_super) {
             this.createBitmapByName('n2_png'),
             this.createBitmapByName('n1_png'),
         ], djs1 = _a[0], djs2 = _a[1], djs3 = _a[2];
-        djs1.x = 350;
+        djs1.x = 370;
         djs1.y = 499;
-        djs2.x = 350;
+        djs2.x = 370;
         djs2.y = 499;
-        djs3.x = 350;
+        djs3.x = 370;
         djs3.y = 499;
         djs1.anchorOffsetX = 43;
         djs1.anchorOffsetY = 43;

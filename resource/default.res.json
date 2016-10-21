@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,bk-dian_png,bk-p1_png,bk-p2_png,bk-sanshe_png,btn-lijixiaheishou_png,icon-emao_png,blank_gif,loading_gif,car_png,daojishi_png,left_png,n1_png,n2_png,n3_png,right_png,tt1_png,tt2_png,tt3_png,xtt1_png,xtt2_png,xtt3_png,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png",
+			"keys": "description_json,bk-dian_png,bk-p1_png,bk-p2_png,bk-sanshe_png,btn-lijixiaheishou_png,icon-emao_png,blank_gif,loading_gif,car_png,daojishi_png,left_png,n1_png,n2_png,n3_png,right_png,tt1_png,tt2_png,tt3_png,xtt1_png,xtt2_png,xtt3_png,xinfeng_png,tts_png,xinzhi_png,btn-1_png,btn-2_png,btn-3_png,shou--left_png,shou--right_png",
 			"name": "preload"
 		}
 	],
@@ -117,44 +117,44 @@
 			"url": "assets/sprite/xtt3.png"
 		},
 		{
-			"name": "1_png",
+			"name": "xinfeng_png",
 			"type": "image",
-			"url": "assets/sprite/1.png"
+			"url": "assets/sprite/xinfeng.png"
 		},
 		{
-			"name": "2_png",
+			"name": "tts_png",
 			"type": "image",
-			"url": "assets/sprite/2.png"
+			"url": "assets/sprite/tts.png"
 		},
 		{
-			"name": "3_png",
+			"name": "xinzhi_png",
 			"type": "image",
-			"url": "assets/sprite/3.png"
+			"url": "assets/sprite/xinzhi.png"
 		},
 		{
-			"name": "4_png",
+			"name": "btn-1_png",
 			"type": "image",
-			"url": "assets/sprite/4.png"
+			"url": "assets/sprite/btn-1.png"
 		},
 		{
-			"name": "5_png",
+			"name": "btn-2_png",
 			"type": "image",
-			"url": "assets/sprite/5.png"
+			"url": "assets/sprite/btn-2.png"
 		},
 		{
-			"name": "6_png",
+			"name": "btn-3_png",
 			"type": "image",
-			"url": "assets/sprite/6.png"
+			"url": "assets/sprite/btn-3.png"
 		},
 		{
-			"name": "7_png",
+			"name": "shou--left_png",
 			"type": "image",
-			"url": "assets/sprite/7.png"
+			"url": "assets/sprite/shou--left.png"
 		},
 		{
-			"name": "8_png",
+			"name": "shou--right_png",
 			"type": "image",
-			"url": "assets/sprite/8.png"
+			"url": "assets/sprite/shou--right.png"
 		}
 	]
 }

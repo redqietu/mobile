@@ -6,6 +6,7 @@ class P2Scene{
             gravity:P2Scene.gravity
         });
     private stage;
+    static scene=new egret.DisplayObjectContainer;
     static score:number=0;
     static deadline:number=60;
     private bodyType=p2.Body.DYNAMIC;

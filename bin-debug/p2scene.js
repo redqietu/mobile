@@ -158,6 +158,7 @@ var P2Scene = (function () {
     P2Scene.world = new p2.World({
         gravity: P2Scene.gravity
     });
+    P2Scene.scene = new egret.DisplayObjectContainer;
     P2Scene.score = 0;
     P2Scene.deadline = 60;
     return P2Scene;
