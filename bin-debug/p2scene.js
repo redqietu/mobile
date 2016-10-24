@@ -335,7 +335,7 @@ var P2Scene = (function () {
     });
     P2Scene.scene = new egret.DisplayObjectContainer;
     P2Scene.score = 0;
-    P2Scene.TIME = 2;
+    P2Scene.TIME = 30;
     P2Scene.deadline = P2Scene.TIME;
     return P2Scene;
 }());

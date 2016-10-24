@@ -9,7 +9,7 @@ class P2Scene{
     static scene=new egret.DisplayObjectContainer;
     private scene=P2Scene.scene;
     static score:number=0;
-    static TIME:number=2;
+    static TIME:number=30;
     static deadline:number=P2Scene.TIME;
     private bodyType=p2.Body.DYNAMIC;
     private world=P2Scene.world;    
