@@ -73,7 +73,7 @@ var P3Scene = (function () {
     p.bindEvent = function () {
         this.btn1.touchEnabled = true;
         this.btn1.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            alert(1);
+            btn1();
         }, this);
         this.btn2.touchEnabled = true;
         this.btn2.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
@@ -95,7 +95,7 @@ var P3Scene = (function () {
         }, this);
         this.btn3.touchEnabled = true;
         this.btn3.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            alert(3);
+            btn3();
         }, this);
         this.logo.touchEnabled = true;
         this.logo.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {

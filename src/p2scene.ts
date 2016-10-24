@@ -163,7 +163,7 @@ class P2Scene{
         },this);
         timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,function(e){
             egret.Ticker.getInstance().unregister(frame,null);
-            this.alert(this.score);
+            this.alert(P2Scene.score);
         },this);
         timer.start();
     }
