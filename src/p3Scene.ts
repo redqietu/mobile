@@ -30,6 +30,7 @@ class P3Scene{
     private btn1;
     private btn2;
     private btn3;
+    private logo;
 
     private createView(){
         var bg0:egret.Bitmap=this.createBitmapByName('bk-sanshe_png');
@@ -54,6 +55,7 @@ class P3Scene{
         this.scene.addChild(logo);
         logo.y=22;
         logo.x=29;
+        this.logo=logo;
 
         var tts:egret.Bitmap=this.createBitmapByName('tts_png');
         this.scene.addChild(tts);
@@ -103,7 +105,7 @@ class P3Scene{
         this.btn2.touchEnabled=true;
         this.btn2.addEventListener(egret.TouchEvent.TOUCH_TAP,function(){
             this.stage.removeChildren();
-            P2Scene.deadline=60;
+            P2Scene.deadline=P2Scene.TIME;
             P2Scene.scene=new egret.DisplayObjectContainer;
             new P2Scene(P2Scene.scene,this.stage);
         },this);
@@ -111,6 +113,13 @@ class P3Scene{
         this.btn3.addEventListener(egret.TouchEvent.TOUCH_TAP,function(){
             alert(3);
         },this);
+
+        
+            
+        this.logo.touchEnabled=true;
+        this.logo.addEventListener( egret.TouchEvent.TOUCH_TAP, ()=>{
+                window.location.href='http://m.emao.com';
+            }, this,true);
     }
     
     private createBitmapByName(name:string):egret.Bitmap {

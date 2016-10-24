@@ -9,7 +9,8 @@ class P2Scene{
     static scene=new egret.DisplayObjectContainer;
     private scene=P2Scene.scene;
     static score:number=0;
-    static deadline:number=60;
+    static TIME:number=2;
+    static deadline:number=P2Scene.TIME;
     private bodyType=p2.Body.DYNAMIC;
     private world=P2Scene.world;    
     private container:egret.DisplayObjectContainer;
@@ -44,8 +45,8 @@ class P2Scene{
     }
     private createDeadline(){
         this.container.addChild(this.deadlineLabel);
-        this.setDeadline(this.deadline=60);
-        this.deadlineLabel.x=this.stageWidth/2-100;
+        this.setDeadline(this.deadline=P2Scene.TIME);
+        this.deadlineLabel.x=this.stageWidth/2-80;
         this.deadlineLabel.textColor=0xffffff;
         this.deadlineLabel.size=60;
     }
@@ -146,7 +147,7 @@ class P2Scene{
             },this);
         };
        egret.Ticker.getInstance().register(frame, this); 
-        var timer=new  egret.Timer(200,300);
+        var timer=new  egret.Timer(200,P2Scene.TIME*5);
         timer.addEventListener(egret.TimerEvent.TIMER,function(e){
             let n=this.random(1,3);
             i++;
@@ -166,6 +167,15 @@ class P2Scene{
                     ease: Back.easeInOut,
                     onComplete:()=>{
                         new P3Scene(P3Scene.scene,this.stage);
+                        TweenMax.from(P3Scene.scene,0.8,{
+                            x:-100,
+                            y:-100,
+                            scale:0.4,
+                            alpha:0,
+                            rotation:-100,
+                            ease: Back.easeInOut,
+                            yoyo:true
+                        })
                     }
                 })
         },this);

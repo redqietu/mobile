@@ -37,6 +37,7 @@ var P3Scene = (function () {
         this.scene.addChild(logo);
         logo.y = 22;
         logo.x = 29;
+        this.logo = logo;
         var tts = this.createBitmapByName('tts_png');
         this.scene.addChild(tts);
         tts.y = 279;
@@ -77,7 +78,7 @@ var P3Scene = (function () {
         this.btn2.touchEnabled = true;
         this.btn2.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             this.stage.removeChildren();
-            P2Scene.deadline = 60;
+            P2Scene.deadline = P2Scene.TIME;
             P2Scene.scene = new egret.DisplayObjectContainer;
             new P2Scene(P2Scene.scene, this.stage);
         }, this);
@@ -85,6 +86,10 @@ var P3Scene = (function () {
         this.btn3.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             alert(3);
         }, this);
+        this.logo.touchEnabled = true;
+        this.logo.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
+            window.location.href = 'http://m.emao.com';
+        }, this, true);
     };
     p.createBitmapByName = function (name) {
         var result = new egret.Bitmap();

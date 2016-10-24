@@ -169,6 +169,11 @@ class Main extends egret.DisplayObjectContainer {
                 // this.createGameScene3();
                 this.setChildIndex(scene,scene.numChildren-1);
             }, this,true);
+            
+        logo.touchEnabled=true;
+        logo.addEventListener( egret.TouchEvent.TOUCH_TAP, ()=>{
+                window.location.href='http://m.emao.com';
+            }, this,true);
     }
 
     private createGameScene2(){

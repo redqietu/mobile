@@ -28,8 +28,8 @@ var P2Scene = (function () {
     };
     p.createDeadline = function () {
         this.container.addChild(this.deadlineLabel);
-        this.setDeadline(this.deadline = 60);
-        this.deadlineLabel.x = this.stageWidth / 2 - 100;
+        this.setDeadline(this.deadline = P2Scene.TIME);
+        this.deadlineLabel.x = this.stageWidth / 2 - 80;
         this.deadlineLabel.textColor = 0xffffff;
         this.deadlineLabel.size = 60;
     };
@@ -125,7 +125,7 @@ var P2Scene = (function () {
             }, this);
         };
         egret.Ticker.getInstance().register(frame, this);
-        var timer = new egret.Timer(200, 300);
+        var timer = new egret.Timer(200, P2Scene.TIME * 5);
         timer.addEventListener(egret.TimerEvent.TIMER, function (e) {
             var n = this.random(1, 3);
             i++;
@@ -146,6 +146,15 @@ var P2Scene = (function () {
                 ease: Back.easeInOut,
                 onComplete: function () {
                     new P3Scene(P3Scene.scene, _this.stage);
+                    TweenMax.from(P3Scene.scene, 0.8, {
+                        x: -100,
+                        y: -100,
+                        scale: 0.4,
+                        alpha: 0,
+                        rotation: -100,
+                        ease: Back.easeInOut,
+                        yoyo: true
+                    });
                 }
             });
         }, this);
@@ -275,7 +284,8 @@ var P2Scene = (function () {
     });
     P2Scene.scene = new egret.DisplayObjectContainer;
     P2Scene.score = 0;
-    P2Scene.deadline = 60;
+    P2Scene.TIME = 2;
+    P2Scene.deadline = P2Scene.TIME;
     return P2Scene;
 }());
 egret.registerClass(P2Scene,'P2Scene');
