@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
-<html>
+<html id="emao">
 <head>
     <meta charset="utf-8">
-    <title>Egret</title>
+    <title>demo</title>
     <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="full-screen" content="true"/>
@@ -19,6 +19,10 @@
             border: 0;
             margin: 0;
             height: 100%;
+        }
+        .pc body{
+            width:640px;
+            margin:0 auto;
         }
     </style>
 
@@ -70,6 +74,7 @@
          * "antialias": //WebGL模式下是否开启抗锯齿，true:开启，false:关闭，默认为false
          * }
          **/
+        document.getElementById('emao').className=egret.Capabilities.isMobile?'mobile':'pc';
         egret.runEgret({renderMode:"canvas", audioType:0});
     </script>
 </body>

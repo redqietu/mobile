@@ -9,6 +9,7 @@ var P2Scene = (function () {
         this.stageHeight = egret.MainContext.instance.stage.stageHeight;
         this.scoreLabel = new egret.TextField;
         this.deadlineLabel = new egret.TextField;
+        this.flag = false;
         this.container = container;
         this.stage = stage;
         this.createScene();
@@ -104,7 +105,10 @@ var P2Scene = (function () {
     };
     p.loop = function () {
         var i = 0;
+        var that = this;
         var onTap = function (e) {
+            if (that.flag)
+                return;
             this.display.__body.userData = this.P2Scene.createBitmapByName(this.display.__anotherTextureName);
             this.P2Scene.container.removeChild(this.display);
             this.P2Scene.container.addChild(this.display.__body.userData);
@@ -135,9 +139,48 @@ var P2Scene = (function () {
             this.createDurex(onTap, "tt" + n + "_png", "xtt" + n + "_png");
         }, this);
         timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function (e) {
-            var _this = this;
             egret.Ticker.getInstance().unregister(frame, null);
-            TweenMax.to(this.container, 1, {
+            this.alert(this.score);
+        }, this);
+        timer.start();
+    };
+    p.random = function (Min, Max) {
+        var Range = Max - Min;
+        var Rand = Math.random();
+        return (Min + Math.round(Rand * Range));
+    };
+    p.alert = function (n) {
+        var _this = this;
+        if (n === void 0) { n = 0; }
+        this.flag = true;
+        var container = new egret.DisplayObjectContainer;
+        this.dialog = this.createBitmapByName('dialog_png');
+        container.addChild(this.dialog);
+        this.dialog.x = 27;
+        this.dialog.y = 370;
+        var text1 = new egret.TextField;
+        text1.text = "\u606D\u559C\uFF0C\u60A8\u6210\u529F\u624E\u7834\u4E86" + n + "\u4E2A\u5957";
+        var text2 = new egret.TextField;
+        text2.text = '让他们喜当爹';
+        text1.textAlign = 'center';
+        text2.textAlign = 'center';
+        text1.width = 686;
+        text2.width = 686;
+        text1.size = 50;
+        text2.size = 50;
+        text1.textColor = 0x000;
+        text2.textColor = 0x000;
+        text1.y = 445;
+        text2.y = 503;
+        text1.x = 32;
+        text2.x = 32;
+        this.btn_queding = this.createBitmapByName('btn-queding_png');
+        this.btn_queding.y = 616;
+        this.btn_queding.x = 136;
+        container.addChild(this.btn_queding);
+        this.btn_queding.touchEnabled = true;
+        this.btn_queding.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
+            TweenMax.to(container, 1, {
                 x: -1000,
                 y: -1000,
                 scale: 0,
@@ -145,7 +188,12 @@ var P2Scene = (function () {
                 rotation: -100,
                 ease: Back.easeInOut,
                 onComplete: function () {
+                    // this.removeChildren();
                     new P3Scene(P3Scene.scene, _this.stage);
+                    P3Scene.scene.x = 0;
+                    P3Scene.scene.y = 0;
+                    P3Scene.scene.alpha = 1;
+                    P3Scene.scene.rotation = 0;
                     TweenMax.from(P3Scene.scene, 0.8, {
                         x: -100,
                         y: -100,
@@ -157,13 +205,16 @@ var P2Scene = (function () {
                     });
                 }
             });
-        }, this);
-        timer.start();
-    };
-    p.random = function (Min, Max) {
-        var Range = Max - Min;
-        var Rand = Math.random();
-        return (Min + Math.round(Rand * Range));
+        });
+        container.addChild(text1);
+        container.addChild(text2);
+        this.scene.addChild(container);
+        container.x = 0;
+        container.y = 0;
+        TweenMax.from(container, 1, {
+            y: 100,
+            alpha: 0
+        });
     };
     p.createScene = function () {
         // this.stage.removeChild(scene);

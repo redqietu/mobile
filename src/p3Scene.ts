@@ -105,9 +105,19 @@ class P3Scene{
         this.btn2.touchEnabled=true;
         this.btn2.addEventListener(egret.TouchEvent.TOUCH_TAP,function(){
             this.stage.removeChildren();
+            this.stage.addChild(this.scene);
             P2Scene.deadline=P2Scene.TIME;
             P2Scene.scene=new egret.DisplayObjectContainer;
             new P2Scene(P2Scene.scene,this.stage);
+            this.scene.x=0;
+            this.scene.y=0;
+            TweenMax.to(this.scene,0.6,{
+                y:0,
+                x:0,
+                rotation:100,
+                alpha:0,
+                onComplete:()=>this.stage.removeChild(this.scene),
+            })
         },this);
         this.btn3.touchEnabled=true;
         this.btn3.addEventListener(egret.TouchEvent.TOUCH_TAP,function(){

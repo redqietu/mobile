@@ -77,10 +77,21 @@ var P3Scene = (function () {
         }, this);
         this.btn2.touchEnabled = true;
         this.btn2.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
+            var _this = this;
             this.stage.removeChildren();
+            this.stage.addChild(this.scene);
             P2Scene.deadline = P2Scene.TIME;
             P2Scene.scene = new egret.DisplayObjectContainer;
             new P2Scene(P2Scene.scene, this.stage);
+            this.scene.x = 0;
+            this.scene.y = 0;
+            TweenMax.to(this.scene, 0.6, {
+                y: 0,
+                x: 0,
+                rotation: 100,
+                alpha: 0,
+                onComplete: function () { return _this.stage.removeChild(_this.scene); },
+            });
         }, this);
         this.btn3.touchEnabled = true;
         this.btn3.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {

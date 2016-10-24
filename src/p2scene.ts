@@ -24,6 +24,9 @@ class P2Scene{
     private djs1;
     private djs2;
     private djs3;
+    private dialog;
+    private btn_queding;
+    private flag=false;
 
     constructor(container:egret.DisplayObjectContainer,stage){
         this.container=container;
@@ -126,7 +129,9 @@ class P2Scene{
 
     private loop(){
         let i=0;
+        var that=this
         let onTap=function (e){
+            if(that.flag)return;
             this.display.__body.userData=this.P2Scene.createBitmapByName(this.display.__anotherTextureName);
             this.P2Scene.container.removeChild(this.display);
             this.P2Scene.container.addChild(this.display.__body.userData);
@@ -158,7 +163,47 @@ class P2Scene{
         },this);
         timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,function(e){
             egret.Ticker.getInstance().unregister(frame,null);
-            TweenMax.to(this.container,1,{
+            this.alert(this.score);
+        },this);
+        timer.start();
+    }
+
+    private random(Min,Max){   
+        var Range = Max - Min;   
+        var Rand = Math.random();   
+        return(Min + Math.round(Rand * Range));   
+    }
+
+    private alert(n=0){
+        this.flag=true;
+        var container=new egret.DisplayObjectContainer;
+        this.dialog=this.createBitmapByName('dialog_png');
+        container.addChild(this.dialog);
+        this.dialog.x=27;
+        this.dialog.y=370;
+        let text1=new egret.TextField;
+        text1.text=`恭喜，您成功扎破了${n}个套`;
+        let text2=new egret.TextField;
+        text2.text='让他们喜当爹';
+        text1.textAlign='center';
+        text2.textAlign='center';
+        text1.width=686;
+        text2.width=686;
+        text1.size=50;
+        text2.size=50;
+        text1.textColor=0x000;
+        text2.textColor=0x000;
+        text1.y=445;
+        text2.y=503;
+        text1.x=32;
+        text2.x=32;
+        this.btn_queding=this.createBitmapByName('btn-queding_png');
+        this.btn_queding.y=616;
+        this.btn_queding.x=136;
+        container.addChild(this.btn_queding);
+        this.btn_queding.touchEnabled=true;
+        this.btn_queding.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
+            TweenMax.to(container,1,{
                     x:-1000,
                     y:-1000,
                     scale:0,
@@ -166,7 +211,12 @@ class P2Scene{
                     rotation:-100,
                     ease: Back.easeInOut,
                     onComplete:()=>{
+                        // this.removeChildren();
                         new P3Scene(P3Scene.scene,this.stage);
+                        P3Scene.scene.x=0;
+                        P3Scene.scene.y=0;
+                        P3Scene.scene.alpha=1;
+                        P3Scene.scene.rotation=0;
                         TweenMax.from(P3Scene.scene,0.8,{
                             x:-100,
                             y:-100,
@@ -177,15 +227,17 @@ class P2Scene{
                             yoyo:true
                         })
                     }
-                })
-        },this);
-        timer.start();
-    }
-
-    private random(Min,Max){   
-        var Range = Max - Min;   
-        var Rand = Math.random();   
-        return(Min + Math.round(Rand * Range));   
+            });
+        });
+        container.addChild(text1);
+        container.addChild(text2);
+        this.scene.addChild(container);
+        container.x=0;
+        container.y=0;
+        TweenMax.from(container,1,{
+            y:100,
+            alpha:0
+        })
     }
 
     private createScene(){

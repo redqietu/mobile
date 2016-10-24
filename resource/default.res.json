@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,bk-dian_png,bk-p1_png,bk-p2_png,bk-sanshe_png,btn-lijixiaheishou_png,icon-emao_png,blank_gif,loading_gif,car_png,daojishi_png,left_png,n1_png,n2_png,n3_png,right_png,tt1_png,tt2_png,tt3_png,xtt1_png,xtt2_png,xtt3_png,xinfeng_png,xinzhi_png,btn-1_png,btn-2_png,btn-3_png,shou--left_png,shou--right_png,tts2_png,tts_png",
+			"keys": "description_json,bk-dian_png,bk-p1_png,bk-p2_png,bk-sanshe_png,btn-lijixiaheishou_png,icon-emao_png,blank_gif,loading_gif,car_png,daojishi_png,left_png,n1_png,n2_png,n3_png,right_png,tt1_png,tt2_png,tt3_png,xtt1_png,xtt2_png,xtt3_png,xinfeng_png,xinzhi_png,btn-1_png,btn-2_png,btn-3_png,shou--left_png,shou--right_png,tts2_png,tts_png,dialog_png,btn-queding_png",
 			"name": "preload"
 		}
 	],
@@ -160,6 +160,16 @@
 			"name": "tts_png",
 			"type": "image",
 			"url": "assets/sprite/tts.png"
+		},
+		{
+			"name": "dialog_png",
+			"type": "image",
+			"url": "assets/bk/dialog.png"
+		},
+		{
+			"name": "btn-queding_png",
+			"type": "image",
+			"url": "assets/btn/btn-queding.png"
 		}
 	]
 }
