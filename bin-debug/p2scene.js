@@ -85,13 +85,35 @@ var P2Scene = (function () {
         this.container.addChild(display);
     };
     p.createGround = function () {
+        var planeShape2 = new p2.Box({
+            width: 1,
+            height: 1000000
+        });
+        var planeBody2 = new p2.Body({
+            mass: 10000,
+            position: [0, 0],
+            type: this.bodyType
+        });
+        planeBody2.addShape(planeShape2);
+        this.world.addBody(planeBody2);
+        var planeShape3 = new p2.Box({
+            width: 1,
+            height: 1000000
+        });
+        var planeBody3 = new p2.Body({
+            mass: 10000,
+            position: [(this.stageWidth) / this.factor, 0],
+            type: this.bodyType
+        });
+        planeBody3.addShape(planeShape3);
+        this.world.addBody(planeBody3);
         var planeShape = new p2.Plane({});
         var planeBody = new p2.Body({
-            mass: 100,
-            position: [0, (this.stageHeight - 100) / this.factor],
+            mass: 0,
+            position: [0, (this.stageHeight + 1000) / this.factor],
             angle: Math.PI
         });
-        // planeBody.angle=Math.PI;
+        planeBody.angle = Math.PI;
         planeBody.addShape(planeShape);
         this.world.addBody(planeBody);
     };

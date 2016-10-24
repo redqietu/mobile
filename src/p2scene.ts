@@ -105,14 +105,41 @@ class P2Scene{
     }
 
     private createGround(){
+
+        var planeShape2:p2.Plane = new p2.Box({
+            width:1,
+            height:1000000
+        });
+        var planeBody2:p2.Body = new p2.Body({
+            mass:10000,
+            position:[0,0],
+            type:this.bodyType
+        });
+        planeBody2.addShape(planeShape2);
+        this.world.addBody(planeBody2);
+
+        
+        var planeShape3:p2.Plane = new p2.Box({
+            width:1,
+            height:1000000
+        });
+        var planeBody3:p2.Body = new p2.Body({
+            mass:10000,
+            position:[(this.stageWidth)/this.factor,0],
+            type:this.bodyType
+        });
+        planeBody3.addShape(planeShape3);
+        this.world.addBody(planeBody3);
+
+        
         var planeShape:p2.Plane = new p2.Plane({
         });
         var planeBody:p2.Body = new p2.Body({
-            mass:100,
-            position:[0,(this.stageHeight-100)/this.factor],
+            mass:0,
+            position:[0,(this.stageHeight+1000)/this.factor],
             angle:Math.PI
         });
-        // planeBody.angle=Math.PI;
+        planeBody.angle=Math.PI;
         planeBody.addShape(planeShape);
         this.world.addBody(planeBody);
     }
