@@ -27,7 +27,7 @@ var P2Scene = (function () {
     p.createScore = function () {
         this.container.addChild(this.scoreLabel);
         this.setScore(P2Scene.score = 0);
-        this.scoreLabel.x = this.stageWidth - 200;
+        this.scoreLabel.x = this.stageWidth - 60;
         this.scoreLabel.y = 30;
         this.scoreLabel.textColor = 0xe01717;
     };
@@ -39,11 +39,11 @@ var P2Scene = (function () {
         this.deadlineLabel.size = 60;
     };
     p.setScore = function (score) {
-        this.scoreLabel.text = "Score:" + score;
+        this.scoreLabel.text = "" + score;
     };
     p.setDeadline = function (time) {
-        if (time == 60) {
-            this.deadlineLabel.text = '01:00';
+        if (time % 60 == 0) {
+            this.deadlineLabel.text = "0" + Math.floor(time / 60) + ":00";
         }
         else {
             if (time <= 9) {
@@ -299,14 +299,14 @@ var P2Scene = (function () {
         });
         scene.anchorOffsetX = this.stage.width / 2;
         scene.anchorOffsetY = this.stage.height / 2;
-        timeline.fromTo(scene, 1.4, {
+        timeline.fromTo(scene, 0.8, {
             x: 0,
             y: 0,
-            alpha: 0,
+            alpha: 0.1,
             // rotation: 100,
             ease: Back.easeOut,
             scaleX: 9,
-            scaleY: 9
+            scaleY: 9,
         }, {
             x: 0,
             y: 0,
@@ -361,7 +361,7 @@ var P2Scene = (function () {
     });
     P2Scene.scene = new egret.DisplayObjectContainer;
     P2Scene.score = 0;
-    P2Scene.TIME = 30;
+    P2Scene.TIME = 2;
     P2Scene.deadline = P2Scene.TIME;
     return P2Scene;
 }());

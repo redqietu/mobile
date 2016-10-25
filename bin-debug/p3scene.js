@@ -89,7 +89,7 @@ var P3Scene = (function () {
                 y: 0,
                 x: 0,
                 rotation: 100,
-                alpha: 0,
+                // alpha:0,
                 onComplete: function () { return _this.stage.removeChild(_this.scene); },
             });
         }, this);

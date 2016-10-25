@@ -34,6 +34,11 @@ var LoadingUI = (function (_super) {
     }
     var d = __define,c=LoadingUI,p=c.prototype;
     p.createView = function () {
+        this.bg = new egret.Shape;
+        this.bg.graphics.beginFill(0xffda0e, 1);
+        this.bg.graphics.drawRect(0, 0, egret.MainContext.instance.stage.stageWidth, egret.MainContext.instance.stage.stageHeight);
+        this.bg.graphics.endFill();
+        this.addChild(this.bg);
         this.textField = new egret.TextField();
         this.addChild(this.textField);
         this.textField.y = 500;

@@ -9,7 +9,7 @@ class P2Scene{
     static scene=new egret.DisplayObjectContainer;
     private scene=P2Scene.scene;
     static score:number=0;
-    static TIME:number=30;
+    static TIME:number=2;
     static deadline:number=P2Scene.TIME;
     private bodyType=p2.Body.DYNAMIC;
     private world=P2Scene.world;    
@@ -46,7 +46,7 @@ class P2Scene{
         
         this.container.addChild(this.scoreLabel);
         this.setScore(P2Scene.score=0);
-        this.scoreLabel.x=this.stageWidth-200;
+        this.scoreLabel.x=this.stageWidth-60;
         this.scoreLabel.y=30;
         this.scoreLabel.textColor=0xe01717;
     }
@@ -58,11 +58,11 @@ class P2Scene{
         this.deadlineLabel.size=60;
     }
     setScore(score){
-        this.scoreLabel.text=`Score:${score}`;
+        this.scoreLabel.text=`${score}`;
     }
     setDeadline(time){
-        if(time==60){
-            this.deadlineLabel.text='01:00';
+        if(time%60==0){
+            this.deadlineLabel.text=`0${Math.floor(time/60)}:00`;
         }else{
             if(time<=9){
                 time='0'+time;
@@ -335,14 +335,14 @@ class P2Scene{
         scene.anchorOffsetX=this.stage.width/2;
         scene.anchorOffsetY=this.stage.height/2;
 
-        timeline.fromTo(scene,1.4,{
+        timeline.fromTo(scene,0.8,{
             x: 0,
             y: 0,
-            alpha: 0,
+            alpha: 0.1,
             // rotation: 100,
             ease: Back.easeOut,
             scaleX:9,
-            scaleY:9
+            scaleY:9,
         },{
             x: 0,
             y: 0,
