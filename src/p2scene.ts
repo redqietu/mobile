@@ -32,6 +32,10 @@ class P2Scene{
         this.container=container;
         this.stage=stage;
         this.createScene();
+        var bodies=[...P2Scene.world.bodies];
+        bodies.forEach((x)=>{
+            P2Scene.world.removeBody(x);
+        })
         P2Scene.world.sleepMode = p2.World.BODY_SLEEPING;
         this.createScore();
         this.show(()=>this.loop());
