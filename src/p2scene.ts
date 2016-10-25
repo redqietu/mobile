@@ -9,7 +9,7 @@ class P2Scene{
     static scene=new egret.DisplayObjectContainer;
     private scene=P2Scene.scene;
     static score:number=0;
-    static TIME:number=2;
+    static TIME:number=10;
     static deadline:number=P2Scene.TIME;
     private bodyType=p2.Body.DYNAMIC;
     private world=P2Scene.world;    
@@ -86,11 +86,11 @@ class P2Scene{
             angle:(180*Math.random()-360)*0.01,
             // velocity: [ 0, Math.random()*50-100],
             // velocity: [ 0, 100],
-            force:[0,-100],
+            force:[0,Math.random()*200-100],
             // gravityScale:1*Math.random(),
             density:10*Math.random(),
             damping:P2Scene.damping,
-            angularVelocity:10,
+            angularVelocity:Math.random()*200-100,
             type:this.bodyType,
         });
         body.addShape(new p2.Box({
