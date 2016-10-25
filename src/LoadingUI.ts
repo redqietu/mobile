@@ -39,18 +39,20 @@ class LoadingUI extends egret.Sprite {
     stage;
 
     private createView():void {
+        var width=egret.MainContext.instance.stage.stageWidth;
+        var height=egret.MainContext.instance.stage.stageHeight;
         this.bg=new egret.Shape;
         this.bg.graphics.beginFill(0xffda0e,1);
-        this.bg.graphics.drawRect(0,0,egret.MainContext.instance.stage.stageWidth,egret.MainContext.instance.stage.stageHeight);
+        this.bg.graphics.drawRect(0,0,width,height);
         this.bg.graphics.endFill();
         this.addChild(this.bg);
         this.textField = new egret.TextField();
         this.addChild(this.textField);
         this.textField.y = 500;
-        this.textField.width = 250;
+        this.textField.width = width;
         this.textField.height = 100;
         this.textField.textColor=0x000;
-        this.textField.x=280;
+        this.textField.textAlign='center';
     }
 
     public setProgress(current:number, total:number):void {

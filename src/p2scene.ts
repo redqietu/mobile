@@ -312,6 +312,7 @@ class P2Scene{
         scene.addChild(djs3);
 
         this.stage.addChild(scene);
+        this.stage.setChildIndex(scene, scene.numChildren-3);
         this.car=car;
         this.mask=mask;
         this.djs1=djs1;
@@ -335,7 +336,7 @@ class P2Scene{
         scene.anchorOffsetX=this.stage.width/2;
         scene.anchorOffsetY=this.stage.height/2;
 
-        timeline.fromTo(scene,0.8,{
+        timeline.fromTo(scene,0.6,{
             x: 0,
             y: 0,
             alpha: 0.1,
@@ -352,7 +353,7 @@ class P2Scene{
             ease: Back.easeInOut,
             scaleX:9,
             scaleY:9,
-        }).fromTo(scene,1,{
+        }).fromTo(scene,1.4,{
             scaleX:9,
             scaleY:9,
         },{

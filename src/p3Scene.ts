@@ -115,8 +115,9 @@ class P3Scene{
                 y:0,
                 x:0,
                 rotation:100,
-                // alpha:0,
+                alpha:0,
                 onComplete:()=>this.stage.removeChild(this.scene),
+                ease: Back.easeInOut,
             })
         },this);
         this.btn3.touchEnabled=true;

@@ -136,11 +136,11 @@ var Main = (function (_super) {
         this.addChild(scene);
         btn.touchEnabled = true;
         btn.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            TweenMax.to(scene, 1, {
+            TweenMax.to(scene, 0.6, {
                 x: -1000,
                 y: -1000,
                 scale: 0,
-                opacity: 0,
+                appha: 0,
                 rotation: -100,
                 ease: Back.easeInOut,
                 onComplete: function () {
