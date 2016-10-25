@@ -22,6 +22,8 @@ var P2Scene = (function () {
         this.show(function () { return _this.loop(); });
         this.createDeadline();
         this.createGround();
+        P2Scene.stageHeight = egret.MainContext.instance.stage.$stageHeight;
+        P2Scene.stageWidth = egret.MainContext.instance.stage.$stageWidth;
     }
     var d = __define,c=P2Scene,p=c.prototype;
     p.createScore = function () {
@@ -57,13 +59,13 @@ var P2Scene = (function () {
     };
     p.createDurex = function (event, displayName, another) {
         var display = this.createBitmapByName(displayName, another);
-        display.x = Math.random() * (this.stageWidth - 120);
-        display.y = Math.random() * (this.stageHeight - 1000);
+        display.x = Math.random() * (this.stageWidth);
+        display.y = Math.random() * (this.stageHeight - 700);
         // display.y=0;
         var body = new p2.Body({
             mass: 100 * Math.random(),
             // position:[display.x/this.factor,display.y/this.factor],
-            position: [display.x / this.factor, display.y / this.factor],
+            position: [display.x / this.factor, (this.stageHeight - display.y) / this.factor],
             angle: (180 * Math.random() - 360) * 0.01,
             // velocity: [ 0, Math.random()*50-100],
             // velocity: [ 0, 100],
@@ -89,25 +91,23 @@ var P2Scene = (function () {
         this.container.addChild(display);
     };
     p.createGround = function () {
-        var planeShape2 = new p2.Box({
-            width: 1,
-            height: 1000000
-        });
+        var planeShape2 = new p2.Plane({});
         var planeBody2 = new p2.Body({
-            mass: 10000,
+            mass: 0,
             position: [0, 0],
-            type: this.bodyType
+            type: this.bodyType,
+            density: 100000,
+            angle: Math.PI / 4
         });
         planeBody2.addShape(planeShape2);
         this.world.addBody(planeBody2);
-        var planeShape3 = new p2.Box({
-            width: 1,
-            height: 1000000
-        });
+        var planeShape3 = new p2.Plane({});
         var planeBody3 = new p2.Body({
-            mass: 10000,
+            mass: 0,
             position: [(this.stageWidth) / this.factor, 0],
-            type: this.bodyType
+            type: this.bodyType,
+            density: 100000,
+            angle: -Math.PI / 4
         });
         planeBody3.addShape(planeShape3);
         this.world.addBody(planeBody3);
@@ -149,7 +149,7 @@ var P2Scene = (function () {
                 var box = x.userData;
                 if (box) {
                     box.x = x.position[0] * this.factor;
-                    box.y = x.position[1] * this.factor;
+                    box.y = P2Scene.stageHeight - x.position[1] * this.factor;
                     box.rotation = x.angle;
                 }
             }, this);
@@ -356,7 +356,7 @@ var P2Scene = (function () {
         }, 1);
     };
     P2Scene.damping = 0.5;
-    P2Scene.gravity = [0, 9];
+    P2Scene.gravity = [0, -9];
     P2Scene.world = new p2.World({
         gravity: P2Scene.gravity
     });

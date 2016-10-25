@@ -1,7 +1,7 @@
 class P2Scene{
     private static instance:P2Scene;
     private static damping:number=0.5;
-    private static gravity:[number,number]=[0,9];
+    private static gravity:[number,number]=[0,-9];
     private static world:p2.World=new p2.World({
             gravity:P2Scene.gravity
         });
@@ -17,6 +17,8 @@ class P2Scene{
     private factor:number=50;
     private stageWidth=egret.MainContext.instance.stage.stageWidth;
     private stageHeight=egret.MainContext.instance.stage.stageHeight;
+    static stageWidth;
+    static stageHeight;
     private scoreLabel=new egret.TextField;
     private deadlineLabel=new egret.TextField;
     private car;
@@ -41,6 +43,8 @@ class P2Scene{
         this.show(()=>this.loop());
         this.createDeadline();
         this.createGround();
+        P2Scene.stageHeight=egret.MainContext.instance.stage.$stageHeight;
+        P2Scene.stageWidth=egret.MainContext.instance.stage.$stageWidth;
     }
     private createScore(){
         
@@ -76,13 +80,13 @@ class P2Scene{
 
     private createDurex(event,displayName,another){
         var display=this.createBitmapByName(displayName,another);
-        display.x=Math.random()*(this.stageWidth-120);
-        display.y=Math.random()*(this.stageHeight-1000);
+        display.x=Math.random()*(this.stageWidth);
+        display.y=Math.random()*(this.stageHeight-700);
         // display.y=0;
         var body=new p2.Body({ 
             mass:100*Math.random(),
             // position:[display.x/this.factor,display.y/this.factor],
-            position:[display.x/this.factor,display.y/this.factor],
+            position:[display.x/this.factor,(this.stageHeight-display.y)/this.factor],
             angle:(180*Math.random()-360)*0.01,
             // velocity: [ 0, Math.random()*50-100],
             // velocity: [ 0, 100],
@@ -110,27 +114,31 @@ class P2Scene{
 
     private createGround(){
 
-        var planeShape2:p2.Plane = new p2.Box({
-            width:1,
-            height:1000000
+        var planeShape2:p2.Plane = new p2.Plane({
+            // width:1,
+            // height:1000000
         });
         var planeBody2:p2.Body = new p2.Body({
-            mass:10000,
+            mass:0,
             position:[0,0],
-            type:this.bodyType
+            type:this.bodyType,
+            density:100000,
+            angle:Math.PI/4
         });
         planeBody2.addShape(planeShape2);
         this.world.addBody(planeBody2);
 
         
-        var planeShape3:p2.Plane = new p2.Box({
-            width:1,
-            height:1000000
+        var planeShape3:p2.Plane = new p2.Plane({
+            // width:1,
+            // height:1000000
         });
         var planeBody3:p2.Body = new p2.Body({
-            mass:10000,
+            mass:0,
             position:[(this.stageWidth)/this.factor,0],
-            type:this.bodyType
+            type:this.bodyType,
+            density:100000,
+            angle:-Math.PI/4
         });
         planeBody3.addShape(planeShape3);
         this.world.addBody(planeBody3);
@@ -177,7 +185,7 @@ class P2Scene{
                 var box: egret.DisplayObject = x.userData;
                 if (box) {
                     box.x = x.position[0]*this.factor;
-                    box.y = x.position[1]*this.factor;
+                    box.y = P2Scene.stageHeight-x.position[1]*this.factor;
                     box.rotation=x.angle;
                 }
             },this);
