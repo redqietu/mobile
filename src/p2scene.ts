@@ -1,7 +1,7 @@
 class P2Scene{
     private static instance:P2Scene;
     private static damping:number=0.5;
-    private static gravity:[number,number]=[0,-19];
+    private static gravity:[number,number]=[0,-9];
     private static world:p2.World=new p2.World({
             gravity:P2Scene.gravity
         });
@@ -82,20 +82,21 @@ class P2Scene{
         var display=this.createBitmapByName(displayName,another);
         display.x=Math.random()*(this.stageWidth);
         display.y=Math.random()*(this.stageHeight-1000);
+        console.log(display.x,display.y)
         // display.y=0;
         var body=new p2.Body({ 
             mass:100,
             // position:[display.x/this.factor,display.y/this.factor],
-            position:[display.x/this.factor*5,(this.stageHeight-display.y)/this.factor],
+            position:[display.x/this.factor*10,(this.stageHeight-display.y)/this.factor],
             angle:(180*Math.random()-360)*0.01,
             // velocity: [ 0, Math.random()*50-100],
             // velocity: [ 0, 100],
-            force:[Math.random()*200-100,Math.random()*200-100],
-            gravityScale:1*Math.random(),
+            velocity:[Math.random()*200-100,-Math.random()*40],
+            // gravityScale:1*Math.random(),
             // density:10*Math.random(),
             // fixedX:true,
-            damping:P2Scene.damping,
-            angularVelocity:Math.random()*100-50,
+            // damping:P2Scene.damping,
+            angularVelocity:Math.random()*50-25,
             type:this.bodyType,
         });
         body.addShape(new p2.Box({
@@ -185,7 +186,7 @@ class P2Scene{
             world.bodies.forEach(function(x:p2.Body){
                 var box: egret.DisplayObject = x.userData;
                 if (box) {
-                    box.x = x.position[0]*this.factor/5;
+                    box.x = x.position[0]*this.factor/10;
                     box.y = P2Scene.stageHeight-x.position[1]*this.factor;
                     box.rotation=x.angle;
                 }
@@ -362,7 +363,7 @@ class P2Scene{
             ease: Back.easeInOut,
             scaleX:9,
             scaleY:9,
-        }).fromTo(scene,1.4,{
+        }).fromTo(scene,1,{
             scaleX:9,
             scaleY:9,
         },{
