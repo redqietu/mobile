@@ -1,7 +1,7 @@
 class P2Scene{
     private static instance:P2Scene;
     private static damping:number=0.5;
-    private static gravity:[number,number]=[0,-9];
+    private static gravity:[number,number]=[0,-4];
     private static world:p2.World=new p2.World({
             gravity:P2Scene.gravity
         });
@@ -82,8 +82,8 @@ class P2Scene{
         var display=this.createBitmapByName(displayName,another);
         display.x=Math.random()*(this.stageWidth);
         display.y=Math.random()*(this.stageHeight-1000);
-        console.log(display.x,display.y)
         // display.y=0;
+        // console.log(this.factor)
         var body=new p2.Body({ 
             mass:100,
             // position:[display.x/this.factor,display.y/this.factor],
@@ -179,6 +179,7 @@ class P2Scene{
             this.P2Scene.setScore(++P2Scene.score);
         }
         let frame=function(dt) {
+            if(that.flag)return;
             let world=P2Scene.world;
             world.step(dt / 1000);
             var stageHeight: number = egret.MainContext.instance.stage.stageHeight;
@@ -192,21 +193,22 @@ class P2Scene{
                 }
             },this);
         };
-       egret.Ticker.getInstance().register(frame, this); 
-        var timer=new  egret.Timer(200,P2Scene.TIME*5);
-        timer.addEventListener(egret.TimerEvent.TIMER,function(e){
+       var ti=egret.Ticker.getInstance();
+       ti.register(frame, this); 
+       var timer=new  egret.Timer(200,P2Scene.TIME*5);
+       timer.addEventListener(egret.TimerEvent.TIMER,function(e){
             let n=this.random(1,3);
             i++;
             if(i%5===0){
                 this.setDeadline(--P2Scene.deadline);
             }
             this.createDurex(onTap,`tt${n}_png`,`xtt${n}_png`);
-        },this);
-        timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,function(e){
-            egret.Ticker.getInstance().unregister(frame,null);
+       },this);
+       timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,function(e){
+            ti.unregister(frame,null);
             this.alert(P2Scene.score);
-        },this);
-        timer.start();
+       },this);
+       timer.start();
     }
 
     private random(Min,Max){   
@@ -346,7 +348,7 @@ class P2Scene{
         scene.anchorOffsetX=this.stage.width/2;
         scene.anchorOffsetY=this.stage.height/2;
 
-        timeline.fromTo(scene,0.6,{
+        timeline.fromTo(scene,1,{
             x: 0,
             y: 0,
             alpha: 0.1,

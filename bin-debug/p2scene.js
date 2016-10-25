@@ -61,8 +61,8 @@ var P2Scene = (function () {
         var display = this.createBitmapByName(displayName, another);
         display.x = Math.random() * (this.stageWidth);
         display.y = Math.random() * (this.stageHeight - 1000);
-        console.log(display.x, display.y);
         // display.y=0;
+        // console.log(this.factor)
         var body = new p2.Body({
             mass: 100,
             // position:[display.x/this.factor,display.y/this.factor],
@@ -148,6 +148,8 @@ var P2Scene = (function () {
             this.P2Scene.setScore(++P2Scene.score);
         };
         var frame = function (dt) {
+            if (that.flag)
+                return;
             var world = P2Scene.world;
             world.step(dt / 1000);
             var stageHeight = egret.MainContext.instance.stage.stageHeight;
@@ -161,7 +163,8 @@ var P2Scene = (function () {
                 }
             }, this);
         };
-        egret.Ticker.getInstance().register(frame, this);
+        var ti = egret.Ticker.getInstance();
+        ti.register(frame, this);
         var timer = new egret.Timer(200, P2Scene.TIME * 5);
         timer.addEventListener(egret.TimerEvent.TIMER, function (e) {
             var n = this.random(1, 3);
@@ -172,7 +175,7 @@ var P2Scene = (function () {
             this.createDurex(onTap, "tt" + n + "_png", "xtt" + n + "_png");
         }, this);
         timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function (e) {
-            egret.Ticker.getInstance().unregister(frame, null);
+            ti.unregister(frame, null);
             this.alert(P2Scene.score);
         }, this);
         timer.start();
@@ -307,7 +310,7 @@ var P2Scene = (function () {
         });
         scene.anchorOffsetX = this.stage.width / 2;
         scene.anchorOffsetY = this.stage.height / 2;
-        timeline.fromTo(scene, 0.6, {
+        timeline.fromTo(scene, 1, {
             x: 0,
             y: 0,
             alpha: 0.1,
@@ -363,7 +366,7 @@ var P2Scene = (function () {
         }, 1);
     };
     P2Scene.damping = 0.5;
-    P2Scene.gravity = [0, -9];
+    P2Scene.gravity = [0, -4];
     P2Scene.world = new p2.World({
         gravity: P2Scene.gravity
     });
