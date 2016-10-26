@@ -24,10 +24,21 @@
             width:640px;
             margin:0 auto;
         }
-    </style>
 
-    <!--这个标签为通过egret提供的第三方库的方式生成的 javascript 文件。删除 modules_files 标签后，库文件加载列表将不会变化，请谨慎操作！-->
-    <!--modules_files_start-->
+        #loading{
+            z-index: 1000;
+            position: absolute;
+            text-align: center;
+            top: 40%;
+            left: 40%;
+            width: 20%;
+            height: 20%;
+            color:#ffda0e;
+            font-size:20px;
+            }
+    </style>
+    
+    <div id="loading"><img src="resource/assets/common/loading/loading2.gif"><div>Loading...</div></div>
 	<script egret="lib" src="libs/modules/egret/egret.js" src-release="libs/modules/egret/egret.min.js"></script>
 	<script egret="lib" src="libs/modules/egret/egret.web.js" src-release="libs/modules/egret/egret.web.min.js"></script>
 	<script egret="lib" src="libs/modules/game/game.js" src-release="libs/modules/game/game.min.js"></script>
@@ -35,25 +46,15 @@
 	<script egret="lib" src="libs/modules/res/res.js" src-release="libs/modules/res/res.min.js"></script>
 	<script egret="lib" src="libs/modules/tween/tween.js" src-release="libs/modules/tween/tween.min.js"></script>
 	<script egret="lib" src="libs/modules/egret3d/egret3d.js" src-release="libs/modules/egret3d/egret3d.min.js"></script>
-	<!--modules_files_end-->
-
-    <!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
-    <!--other_libs_files_start-->
-
 	<script egret="lib" src="libs/static/tween/TweenMax.js" src-release="libs/static/tween/TweenMax.js"></script>
 	<script egret="lib" src="libs/static/physics/p2.js" src-release="libs/static/physics/p2.js"></script>
-    <!--other_libs_files_end-->
-
-    <!--这个标签会被替换为项目中所有的 javascript 文件。删除 game_files 标签后，项目文件加载列表将不会变化，请谨慎操作！-->
-    <!--game_files_start-->
 	<script egret="game" src="bin-debug/LoadingUI.js"></script>
 	<script egret="game" src="bin-debug/Main.js"></script>
 	<script egret="game" src="bin-debug/p2scene.js"></script>
 	<script egret="game" src="bin-debug/p3Scene.js"></script>
-	<!--game_files_end-->
 </head>
 <body>
-
+    <div class="weixin"></div>
     <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
          data-entry-class="Main"
          data-orientation="auto"
@@ -75,15 +76,9 @@
         };
     </script>
     <script>
-        /**
-         * {
-         * "renderMode":, //引擎渲染模式，"canvas" 或者 "webgl"
-         * "audioType": "" //使用的音频类型，0:默认，1:qq audio，2:web audio，3:audio
-         * "antialias": //WebGL模式下是否开启抗锯齿，true:开启，false:关闭，默认为false
-         * }
-         **/
         document.getElementById('emao').className=egret.Capabilities.isMobile?'mobile':'pc';
         egret.runEgret({renderMode:"canvas", audioType:0});
+        document.getElementById("loading").style.display = "none";
     </script>
 </body>
 </html>
