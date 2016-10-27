@@ -172,7 +172,7 @@ class Main extends egret.DisplayObjectContainer {
             
         logo.touchEnabled=true;
         logo.addEventListener( egret.TouchEvent.TOUCH_TAP, ()=>{
-                window.location.href='http://m.emao.com';
+                // window.location.href='http://m.emao.com';
             }, this,true);
     }
 

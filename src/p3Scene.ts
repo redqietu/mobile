@@ -31,6 +31,37 @@ class P3Scene{
     private btn2;
     private btn3;
     private logo;
+    private createLayer(e){
+        var ct=new egret.DisplayObjectContainer;
+        this.stage.addChild(ct);
+        var shape=new egret.Shape;
+        shape.graphics.beginFill(0x000,1);
+        shape.graphics.drawRect(0,0,this.stageWidth,this.stageHeight);
+        shape.graphics.endFill();
+        shape.alpha=0.9;
+        ct.addChild(shape);
+        
+        ct.addEventListener(egret.TouchEvent.TOUCH_TAP,(e)=>{
+            alert(3);
+            e.stopPropagation();
+        },ct,false);
+
+        var share=this.createBitmapByName('layer-share_png');
+        share.x=92;
+        share.y=100;
+
+        var close=this.createBitmapByName('btn-close_png');
+        close.x=23;
+        close.y=22;
+        ct.addChild(close);
+        ct.addChild(share);
+
+        
+        
+        close.addEventListener(egret.TouchEvent.TOUCH_TAP,(e)=>{
+            this.stage.removeChild(ct);
+        },ct,false);
+    }
 
     private createView(){
         var bg0:egret.Bitmap=this.createBitmapByName('bk-sanshe_png');
@@ -100,7 +131,8 @@ class P3Scene{
     private bindEvent(){
         this.btn1.touchEnabled=true;
         this.btn1.addEventListener(egret.TouchEvent.TOUCH_TAP,function(){
-            btn1();
+            // btn1();
+            this.createLayer();
         },this);
         this.btn2.touchEnabled=true;
         this.btn2.addEventListener(egret.TouchEvent.TOUCH_TAP,function(){
@@ -129,7 +161,7 @@ class P3Scene{
             
         this.logo.touchEnabled=true;
         this.logo.addEventListener( egret.TouchEvent.TOUCH_TAP, ()=>{
-                window.location.href='http://m.emao.com';
+                // window.location.href='http://m.emao.com';
             }, this,true);
     }
     

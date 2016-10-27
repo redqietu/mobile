@@ -153,7 +153,7 @@ var Main = (function (_super) {
         }, this, true);
         logo.touchEnabled = true;
         logo.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            window.location.href = 'http://m.emao.com';
+            // window.location.href='http://m.emao.com';
         }, this, true);
     };
     p.createGameScene2 = function () {

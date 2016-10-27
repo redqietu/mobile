@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,bk-dian_png,bk-p1_png,bk-p2_png,bk-sanshe_png,btn-lijixiaheishou_png,icon-emao_png,blank_gif,loading_gif,car_png,daojishi_png,left_png,n1_png,n2_png,n3_png,right_png,tt1_png,tt2_png,tt3_png,xtt1_png,xtt2_png,xtt3_png,xinfeng_png,xinzhi_png,btn-1_png,btn-2_png,btn-3_png,shou--left_png,shou--right_png,tts2_png,tts_png,dialog_png,btn-queding_png",
+			"keys": "description_json,bk-dian_png,bk-p1_png,bk-p2_png,bk-sanshe_png,btn-lijixiaheishou_png,icon-emao_png,blank_gif,loading_gif,car_png,daojishi_png,left_png,n1_png,n2_png,n3_png,right_png,tt1_png,tt2_png,tt3_png,xtt1_png,xtt2_png,xtt3_png,xinfeng_png,xinzhi_png,btn-1_png,btn-2_png,btn-3_png,shou--left_png,shou--right_png,tts2_png,tts_png,dialog_png,btn-queding_png,btn-close_png,layer-share_png",
 			"name": "preload"
 		}
 	],
@@ -175,6 +175,21 @@
 			"url": "assets/common/loading/loading2.gif",
 			"type": "image",
 			"name": "loading2_gif"
+		},
+		{
+			"url": "assets/bk/bk-p1-bak1.png",
+			"type": "image",
+			"name": "bk-p1-bak1_png"
+		},
+		{
+			"url": "assets/btn/btn-close.png",
+			"type": "image",
+			"name": "btn-close_png"
+		},
+		{
+			"url": "assets/layer/layer-share.png",
+			"type": "image",
+			"name": "layer-share_png"
 		}
 	]
 }

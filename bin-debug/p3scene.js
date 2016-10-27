@@ -19,6 +19,32 @@ var P3Scene = (function () {
         this.stage.scaleMode = egret.StageScaleMode.EXACT_FIT;
         this.stage.addChild(this.scene);
     };
+    p.createLayer = function (e) {
+        var _this = this;
+        var ct = new egret.DisplayObjectContainer;
+        this.stage.addChild(ct);
+        var shape = new egret.Shape;
+        shape.graphics.beginFill(0x000, 1);
+        shape.graphics.drawRect(0, 0, this.stageWidth, this.stageHeight);
+        shape.graphics.endFill();
+        shape.alpha = 0.9;
+        ct.addChild(shape);
+        ct.addEventListener(egret.TouchEvent.TOUCH_TAP, function (e) {
+            alert(3);
+            e.stopPropagation();
+        }, ct, false);
+        var share = this.createBitmapByName('layer-share_png');
+        share.x = 92;
+        share.y = 100;
+        var close = this.createBitmapByName('btn-close_png');
+        close.x = 23;
+        close.y = 22;
+        ct.addChild(close);
+        ct.addChild(share);
+        close.addEventListener(egret.TouchEvent.TOUCH_TAP, function (e) {
+            _this.stage.removeChild(ct);
+        }, ct, false);
+    };
     p.createView = function () {
         var bg0 = this.createBitmapByName('bk-sanshe_png');
         var bg1 = this.createBitmapByName('bk-dian_png');
@@ -73,7 +99,8 @@ var P3Scene = (function () {
     p.bindEvent = function () {
         this.btn1.touchEnabled = true;
         this.btn1.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            btn1();
+            // btn1();
+            this.createLayer();
         }, this);
         this.btn2.touchEnabled = true;
         this.btn2.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
@@ -100,7 +127,7 @@ var P3Scene = (function () {
         }, this);
         this.logo.touchEnabled = true;
         this.logo.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            window.location.href = 'http://m.emao.com';
+            // window.location.href='http://m.emao.com';
         }, this, true);
     };
     p.createBitmapByName = function (name) {
