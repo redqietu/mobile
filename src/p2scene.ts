@@ -91,7 +91,7 @@ class P2Scene{
             angle:(180*Math.random()-360)*0.01,
             // velocity: [ 0, Math.random()*50-100],
             // velocity: [ 0, 100],
-            velocity:[Math.random()*200-100,-Math.random()*40],
+            velocity:[Math.random()*80-40,-Math.random()*40],
             // gravityScale:1*Math.random(),
             // density:10*Math.random(),
             // fixedX:true,
