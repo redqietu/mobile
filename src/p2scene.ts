@@ -1,7 +1,7 @@
 class P2Scene{
     private static instance:P2Scene;
     private static damping:number=0.5;
-    private static gravity:[number,number]=[0,-4];
+    private static gravity:[number,number]=[0,-2];
     private static world:p2.World=new p2.World({
             gravity:P2Scene.gravity
         });
@@ -80,23 +80,23 @@ class P2Scene{
 
     private createDurex(event,displayName,another){
         var display=this.createBitmapByName(displayName,another);
-        display.x=Math.random()*(this.stageWidth);
-        display.y=Math.random()*(this.stageHeight-1000);
-        // display.y=0;
+        display.x=Math.random()*(this.stageWidth)-77;
+        // display.y=Math.random()*(this.stageHeight-1000);
+        display.y=-215;
         // console.log(this.factor)
         var body=new p2.Body({ 
             mass:100,
             // position:[display.x/this.factor,display.y/this.factor],
-            position:[display.x/this.factor*10,(this.stageHeight-display.y)/this.factor],
-            angle:(180*Math.random()-360)*0.01,
+            position:[display.x/this.factor,(this.stageHeight-display.y)/this.factor],
+            angle:(180*Math.random()-180)*0.03,
             // velocity: [ 0, Math.random()*50-100],
             // velocity: [ 0, 100],
-            velocity:[Math.random()*80-40,-Math.random()*40],
+            velocity:[0,-Math.random()*40],
             // gravityScale:1*Math.random(),
             // density:10*Math.random(),
-            // fixedX:true,
+            fixedX:true,
             // damping:P2Scene.damping,
-            angularVelocity:Math.random()*50-25,
+            // angularVelocity:Math.random()*50-25,
             type:this.bodyType,
         });
         body.addShape(new p2.Box({
@@ -187,7 +187,7 @@ class P2Scene{
             world.bodies.forEach(function(x:p2.Body){
                 var box: egret.DisplayObject = x.userData;
                 if (box) {
-                    box.x = x.position[0]*this.factor/10;
+                    box.x = x.position[0]*this.factor;
                     box.y = P2Scene.stageHeight-x.position[1]*this.factor;
                     box.rotation=x.angle;
                 }
@@ -205,6 +205,7 @@ class P2Scene{
             this.createDurex(onTap,`tt${n}_png`,`xtt${n}_png`);
        },this);
        timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,function(e){
+            document.querySelector('title').innerHTML=`耶，我成功扎破了${P2Scene.score}个套，让他们喜当爹，快来参与吧！`;
             ti.unregister(frame,null);
             this.alert(P2Scene.score);
        },this);

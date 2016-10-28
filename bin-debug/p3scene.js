@@ -27,11 +27,10 @@ var P3Scene = (function () {
         shape.graphics.beginFill(0x000, 1);
         shape.graphics.drawRect(0, 0, this.stageWidth, this.stageHeight);
         shape.graphics.endFill();
-        shape.alpha = 0.9;
+        shape.alpha = 0.8;
         ct.addChild(shape);
-        ct.addEventListener(egret.TouchEvent.TOUCH_TAP, function (e) {
-            alert(3);
-            e.stopPropagation();
+        ct.touchEnabled = true;
+        ct.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
         }, ct, false);
         var share = this.createBitmapByName('layer-share_png');
         share.x = 92;
@@ -41,6 +40,7 @@ var P3Scene = (function () {
         close.y = 22;
         ct.addChild(close);
         ct.addChild(share);
+        close.touchEnabled = true;
         close.addEventListener(egret.TouchEvent.TOUCH_TAP, function (e) {
             _this.stage.removeChild(ct);
         }, ct, false);
@@ -66,8 +66,9 @@ var P3Scene = (function () {
         this.logo = logo;
         var tts = this.createBitmapByName('tts_png');
         this.scene.addChild(tts);
-        tts.y = 279;
+        tts.y = 290;
         tts.x = 64;
+        tts.height = 620;
         var xinfeng = this.createBitmapByName('xinfeng_png');
         this.scene.addChild(xinfeng);
         xinfeng.y = 866;
@@ -99,7 +100,7 @@ var P3Scene = (function () {
     p.bindEvent = function () {
         this.btn1.touchEnabled = true;
         this.btn1.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            // btn1();
+            btn1();
             this.createLayer();
         }, this);
         this.btn2.touchEnabled = true;
@@ -120,10 +121,12 @@ var P3Scene = (function () {
                 onComplete: function () { return _this.stage.removeChild(_this.scene); },
                 ease: Back.easeInOut,
             });
+            btn2();
         }, this);
         this.btn3.touchEnabled = true;
         this.btn3.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             btn3();
+            document.location.href = 'http://zt.m.emao.com/bachelor';
         }, this);
         this.logo.touchEnabled = true;
         this.logo.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {

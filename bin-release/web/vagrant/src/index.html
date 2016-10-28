@@ -2,7 +2,7 @@
 <html id="emao">
 <head>
     <meta charset="utf-8">
-    <title>demo</title>
+    <title>喂我吃狗粮，哼。让他喜当爹_一猫汽车网</title>
     <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="full-screen" content="true"/>
@@ -38,7 +38,7 @@
         }
     </style>
     
-    <div id="loading"><img src="resource/assets/common/loading/loading2_29fa718c.gif"><div>Loading...</div></div>
+    <div id="loading"><img src="resource/assets/common/loading/loading2.gif"><div>Loading...</div></div>
     <!--modules_files_start-->
 	<script egret="lib" src="libs/modules/egret/egret.min.js"></script>
 	<script egret="lib" src="libs/modules/egret/egret.web.min.js"></script>
@@ -57,7 +57,9 @@
 	<!--game_files_end-->
 </head>
 <body>
-    <div class="weixin"></div>
+    <div class="weixin" style="margin: 0 auto;width: 0px;height: 0px;overflow: hidden;">
+        <img src="resource/assets/sprite/weixin.png">
+    </div>
     <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
          data-entry-class="Main"
          data-orientation="auto"
@@ -72,10 +74,13 @@
     </div>
     <script>    
         var btn1=function(){
-            alert('bnt1');
+            ga('send', 'event', 'ymdoube11_h5', 'fenxiang');
         };
+        var btn2=function(){
+            ga('send', 'event', 'ymdoube11_h5', 'zaiwan');
+        }
         var btn3=function(){
-            alert('bnt3');
+            ga('send', 'event', 'ymdoube11_h5', 'tiaozhuan');
         };
     </script>
     <script>
@@ -83,5 +88,10 @@
         egret.runEgret({renderMode:"canvas", audioType:0});
         document.getElementById("loading").style.display = "none";
     </script>
+    <script src="http://s.emao.net/mobile/wap/js/baidu/baiduAnaly-m.js"></script>
+    <script src="http://s.emao.net/mobile/wap/js/zepto.js"></script>
+    <script src="http://s.emao.net/mobile/wap/js/zepto.cookie.min.js"></script>
+    <script src="http://s.emao.net/build/wap/js/common/ga.js"></script>
+
 </body>
 </html>

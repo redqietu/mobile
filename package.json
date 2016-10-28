@@ -1,0 +1,19 @@
+{
+  "name": "allinone",
+  "version": "1.0.0",
+  "description": "allinone",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "allinone"
+  ],
+  "author": "wanghongxin",
+  "license": "ISC",
+  "_dev":{
+    "yasuo":"fis3-optimizer-imagemin",
+    "yasuo2":"fis3-postpackager-loader",
+    "xiangdui":"fis3-hook-relative"
+  }
+}

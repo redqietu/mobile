@@ -59,23 +59,23 @@ var P2Scene = (function () {
     };
     p.createDurex = function (event, displayName, another) {
         var display = this.createBitmapByName(displayName, another);
-        display.x = Math.random() * (this.stageWidth);
-        display.y = Math.random() * (this.stageHeight - 1000);
-        // display.y=0;
+        display.x = Math.random() * (this.stageWidth) - 77;
+        // display.y=Math.random()*(this.stageHeight-1000);
+        display.y = -215;
         // console.log(this.factor)
         var body = new p2.Body({
             mass: 100,
             // position:[display.x/this.factor,display.y/this.factor],
-            position: [display.x / this.factor * 10, (this.stageHeight - display.y) / this.factor],
-            angle: (180 * Math.random() - 360) * 0.01,
+            position: [display.x / this.factor, (this.stageHeight - display.y) / this.factor],
+            angle: (180 * Math.random() - 180) * 0.03,
             // velocity: [ 0, Math.random()*50-100],
             // velocity: [ 0, 100],
-            velocity: [Math.random() * 80 - 40, -Math.random() * 40],
+            velocity: [0, -Math.random() * 40],
             // gravityScale:1*Math.random(),
             // density:10*Math.random(),
-            // fixedX:true,
+            fixedX: true,
             // damping:P2Scene.damping,
-            angularVelocity: Math.random() * 50 - 25,
+            // angularVelocity:Math.random()*50-25,
             type: this.bodyType,
         });
         body.addShape(new p2.Box({
@@ -157,7 +157,7 @@ var P2Scene = (function () {
             world.bodies.forEach(function (x) {
                 var box = x.userData;
                 if (box) {
-                    box.x = x.position[0] * this.factor / 10;
+                    box.x = x.position[0] * this.factor;
                     box.y = P2Scene.stageHeight - x.position[1] * this.factor;
                     box.rotation = x.angle;
                 }
@@ -175,6 +175,7 @@ var P2Scene = (function () {
             this.createDurex(onTap, "tt" + n + "_png", "xtt" + n + "_png");
         }, this);
         timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function (e) {
+            document.querySelector('title').innerHTML = "\u8036\uFF0C\u6211\u6210\u529F\u624E\u7834\u4E86" + P2Scene.score + "\u4E2A\u5957\uFF0C\u8BA9\u4ED6\u4EEC\u559C\u5F53\u7239\uFF0C\u5FEB\u6765\u53C2\u4E0E\u5427\uFF01";
             ti.unregister(frame, null);
             this.alert(P2Scene.score);
         }, this);
@@ -366,7 +367,7 @@ var P2Scene = (function () {
         }, 1);
     };
     P2Scene.damping = 0.5;
-    P2Scene.gravity = [0, -4];
+    P2Scene.gravity = [0, -2];
     P2Scene.world = new p2.World({
         gravity: P2Scene.gravity
     });

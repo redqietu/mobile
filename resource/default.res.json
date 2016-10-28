@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,bk-dian_png,bk-p1_png,bk-p2_png,bk-sanshe_png,btn-lijixiaheishou_png,icon-emao_png,blank_gif,loading_gif,car_png,daojishi_png,left_png,n1_png,n2_png,n3_png,right_png,tt1_png,tt2_png,tt3_png,xtt1_png,xtt2_png,xtt3_png,xinfeng_png,xinzhi_png,btn-1_png,btn-2_png,btn-3_png,shou--left_png,shou--right_png,tts2_png,tts_png,dialog_png,btn-queding_png,btn-close_png,layer-share_png",
+			"keys": "description_json,bk-dian_png,bk-p1_png,bk-p2_png,bk-sanshe_png,btn-lijixiaheishou_png,icon-emao_png,blank_gif,loading_gif,car_png,daojishi_png,left_png,n1_png,n2_png,n3_png,right_png,tt1_png,tt2_png,tt3_png,xtt1_png,xtt2_png,xtt3_png,xinfeng_png,xinzhi_png,btn-1_png,btn-2_png,btn-3_png,shou--left_png,shou--right_png,tts_png,dialog_png,btn-queding_png,layer-share_png,btn-close_png",
 			"name": "preload"
 		}
 	],
@@ -152,11 +152,6 @@
 			"name": "shou--right_png"
 		},
 		{
-			"url": "assets/sprite/tts2.png",
-			"type": "image",
-			"name": "tts2_png"
-		},
-		{
 			"url": "assets/sprite/tts.png",
 			"type": "image",
 			"name": "tts_png"
@@ -182,14 +177,14 @@
 			"name": "bk-p1-bak1_png"
 		},
 		{
-			"url": "assets/btn/btn-close.png",
-			"type": "image",
-			"name": "btn-close_png"
-		},
-		{
 			"url": "assets/layer/layer-share.png",
 			"type": "image",
 			"name": "layer-share_png"
+		},
+		{
+			"name": "btn-close_png",
+			"type": "image",
+			"url": "assets/btn/btn-close.png"
 		}
 	]
 }
