@@ -11,6 +11,16 @@
     <meta name="360-fullscreen" content="true"/>
     <meta name="author" content="wanghongxin"/>
     <meta name="qq" content="2262118088"/>
+    
+    
+    <div id="loading"><img src="resource/assets/common/loading/loading2_29fa718c.gif"><div>Loading...</div></div>
+    <!--modules_files_start-->
+	<!--modules_files_end-->
+    <!--other_libs_files_start-->
+    <!--other_libs_files_end-->
+    <!--game_files_start-->
+	<!--game_files_end-->
+
     <style>
         html, body {
             -ms-touch-action: none;
@@ -37,24 +47,6 @@
             font-size:20px;
         }
     </style>
-    
-    <div id="loading"><img src="resource/assets/common/loading/loading2_29fa718c.gif"><div>Loading...</div></div>
-    <!--modules_files_start-->
-	<script egret="lib" src="libs/modules/egret/egret.min.js"></script>
-	<script egret="lib" src="libs/modules/egret/egret.web.min.js"></script>
-	<script egret="lib" src="libs/modules/game/game.min.js"></script>
-	<script egret="lib" src="libs/modules/game/game.web.min.js"></script>
-	<script egret="lib" src="libs/modules/res/res.min.js"></script>
-	<script egret="lib" src="libs/modules/tween/tween.min.js"></script>
-	<script egret="lib" src="libs/modules/egret3d/egret3d.min.js"></script>
-	<!--modules_files_end-->
-    <!--other_libs_files_start-->
-	<script egret="lib" src="libs/static/tween/TweenMax.js"></script>
-	<script egret="lib" src="libs/static/physics/p2.js"></script>
-    <!--other_libs_files_end-->
-    <!--game_files_start-->
-	<script src="main.min.js"></script>
-	<!--game_files_end-->
 </head>
 <body>
     <div class="weixin"></div>
@@ -70,15 +62,17 @@
          data-show-fps="false" data-show-log="false"
          data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
     </div>
-    <script>    
+
+<script egret="lib" src="../pkg/libs/index.html_aio.js"></script>
+<script>    
         var btn1=function(){
             alert('bnt1');
         };
         var btn3=function(){
             alert('bnt3');
         };
-    </script>
-    <script>
+    
+
         document.getElementById('emao').className=egret.Capabilities.isMobile?'mobile':'pc';
         egret.runEgret({renderMode:"canvas", audioType:0});
         document.getElementById("loading").style.display = "none";
