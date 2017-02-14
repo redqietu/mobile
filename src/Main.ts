@@ -154,13 +154,37 @@ class Main extends egret.DisplayObjectContainer {
         this.addChild(scene);
         btn.touchEnabled=true;
         btn.addEventListener( egret.TouchEvent.TOUCH_TAP, ()=>{
-                
+                TweenMax.to(scene,1,{
+                    x:-1000,
+                    y:-1000,
+                    scale:0,
+                    appha:0,
+                    rotation:-100,
+                    ease: Back.easeInOut,
+                    onComplete:()=>{
+                        this.removeChild(scene);
+                    }
+                });
+                this.createGameScene2();
+                // this.createGameScene3();
+                this.setChildIndex(scene,scene.numChildren-1);
+            }, this,true);
+            
+        logo.touchEnabled=true;
+        logo.addEventListener( egret.TouchEvent.TOUCH_TAP, ()=>{
+                // window.location.href='http://m.emao.com';
             }, this,true);
     }
 
     private createGameScene2(){
+        
+      new P2Scene(P2Scene.scene,this.stage);
 
+    }
 
+    private createGameScene3(){
+        
+        new P3Scene(P3Scene.scene,this.stage);
     }
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

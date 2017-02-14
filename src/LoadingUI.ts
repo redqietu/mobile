@@ -35,17 +35,36 @@ class LoadingUI extends egret.Sprite {
     }
 
     private textField:egret.TextField;
+    private bg:egret.Shape;
+    private textfield;
 
     private createView():void {
+        var width=egret.MainContext.instance.stage.stageWidth;
+        var height=egret.MainContext.instance.stage.stageHeight;
+        this.bg=new egret.Shape;
+        this.bg.graphics.beginFill(0xffda0e,1);
+        this.bg.graphics.drawRect(0,0,width,height);
+        this.bg.graphics.endFill();
+        this.addChild(this.bg);
         this.textField = new egret.TextField();
         this.addChild(this.textField);
-        this.textField.y = 300;
-        this.textField.width = 480;
+        this.textField.y = 500;
+        this.textField.width = width;
         this.textField.height = 100;
-        this.textField.textAlign = "center";
+        this.textField.textColor=0x000;
+        this.textField.textAlign='center';
+        
+        this.textfield = new egret.TextField();
+        this.addChild(this.textfield);
+        this.textfield.y = 532;
+        this.textfield.width = width;
+        this.textfield.height = 100;
+        this.textfield.textColor=0x000;
+        this.textfield.textAlign='center';
     }
 
     public setProgress(current:number, total:number):void {
-        this.textField.text = `Loading...${current}/${total}`;
+        this.textfield.text = `加载了${current}个,还剩${total-current}个`;
+        this.textField.text = `猫哥正在为您拼命加载游戏资源...`;
     }
 }

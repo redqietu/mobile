@@ -34,15 +34,31 @@ var LoadingUI = (function (_super) {
     }
     var d = __define,c=LoadingUI,p=c.prototype;
     p.createView = function () {
+        var width = egret.MainContext.instance.stage.stageWidth;
+        var height = egret.MainContext.instance.stage.stageHeight;
+        this.bg = new egret.Shape;
+        this.bg.graphics.beginFill(0xffda0e, 1);
+        this.bg.graphics.drawRect(0, 0, width, height);
+        this.bg.graphics.endFill();
+        this.addChild(this.bg);
         this.textField = new egret.TextField();
         this.addChild(this.textField);
-        this.textField.y = 300;
-        this.textField.width = 480;
+        this.textField.y = 500;
+        this.textField.width = width;
         this.textField.height = 100;
-        this.textField.textAlign = "center";
+        this.textField.textColor = 0x000;
+        this.textField.textAlign = 'center';
+        this.textfield = new egret.TextField();
+        this.addChild(this.textfield);
+        this.textfield.y = 532;
+        this.textfield.width = width;
+        this.textfield.height = 100;
+        this.textfield.textColor = 0x000;
+        this.textfield.textAlign = 'center';
     };
     p.setProgress = function (current, total) {
-        this.textField.text = "Loading..." + current + "/" + total;
+        this.textfield.text = "\u52A0\u8F7D\u4E86" + current + "\u4E2A,\u8FD8\u5269" + (total - current) + "\u4E2A";
+        this.textField.text = "\u732B\u54E5\u6B63\u5728\u4E3A\u60A8\u62FC\u547D\u52A0\u8F7D\u6E38\u620F\u8D44\u6E90...";
     };
     return LoadingUI;
 }(egret.Sprite));
