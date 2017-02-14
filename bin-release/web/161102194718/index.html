@@ -2,7 +2,7 @@
 <html id="emao">
 <head>
     <meta charset="utf-8">
-    <title>demo</title>
+    <title>喂我吃狗粮，哼。让他喜当爹_一猫汽车网</title>
     <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="full-screen" content="true"/>
@@ -11,16 +11,6 @@
     <meta name="360-fullscreen" content="true"/>
     <meta name="author" content="wanghongxin"/>
     <meta name="qq" content="2262118088"/>
-    
-    
-    <div id="loading"><img src="resource/assets/common/loading/loading2_29fa718c.gif"><div>Loading...</div></div>
-    <!--modules_files_start-->
-	<!--modules_files_end-->
-    <!--other_libs_files_start-->
-    <!--other_libs_files_end-->
-    <!--game_files_start-->
-	<!--game_files_end-->
-
     <style>
         html, body {
             -ms-touch-action: none;
@@ -47,9 +37,29 @@
             font-size:20px;
         }
     </style>
+    
+    <div id="loading"><img src="resource/assets/common/loading/loading2.gif"><div>Loading...</div></div>
+    <!--modules_files_start-->
+	<script egret="lib" src="libs/modules/egret/egret.min.js"></script>
+	<script egret="lib" src="libs/modules/egret/egret.web.min.js"></script>
+	<script egret="lib" src="libs/modules/game/game.min.js"></script>
+	<script egret="lib" src="libs/modules/game/game.web.min.js"></script>
+	<script egret="lib" src="libs/modules/res/res.min.js"></script>
+	<script egret="lib" src="libs/modules/tween/tween.min.js"></script>
+	<script egret="lib" src="libs/modules/egret3d/egret3d.min.js"></script>
+	<!--modules_files_end-->
+    <!--other_libs_files_start-->
+	<script egret="lib" src="libs/static/tween/TweenMax.js"></script>
+	<script egret="lib" src="libs/static/physics/p2.js"></script>
+    <!--other_libs_files_end-->
+    <!--game_files_start-->
+	<script src="main.min.js"></script>
+	<!--game_files_end-->
 </head>
 <body>
-    <div class="weixin"></div>
+    <div class="weixin" style="margin: 0 auto;width: 0px;height: 0px;overflow: hidden;">
+        <img src="resource/assets/sprite/weixin.png">
+    </div>
     <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
          data-entry-class="Main"
          data-orientation="auto"
@@ -62,21 +72,26 @@
          data-show-fps="false" data-show-log="false"
          data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
     </div>
-
-<script egret="lib" src="pkg/libs_97cc57b.js"></script>
-<script src="main.min_0f0b4cb.js"></script>
-<script>    
+    <script>    
         var btn1=function(){
-            alert('bnt1');
+            ga('send', 'event', 'ymdoube11_h5', 'fenxiang');
         };
+        var btn2=function(){
+            ga('send', 'event', 'ymdoube11_h5', 'zaiwan');
+        }
         var btn3=function(){
-            alert('bnt3');
+            ga('send', 'event', 'ymdoube11_h5', 'tiaozhuan');
         };
-    
-
+    </script>
+    <script>
         document.getElementById('emao').className=egret.Capabilities.isMobile?'mobile':'pc';
         egret.runEgret({renderMode:"canvas", audioType:0});
         document.getElementById("loading").style.display = "none";
     </script>
+    <script src="http://s.emao.net/mobile/wap/js/baidu/baiduAnaly-m.js"></script>
+    <script src="http://s.emao.net/mobile/wap/js/zepto.js"></script>
+    <script src="http://s.emao.net/mobile/wap/js/zepto.cookie.min.js"></script>
+    <script src="http://s.emao.net/build/wap/js/common/ga.js"></script>
+
 </body>
 </html>
