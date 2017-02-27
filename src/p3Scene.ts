@@ -16,7 +16,7 @@ class P3Scene{
         this.stageHeight=this.stage.stageHeight;
     }
     private init(){
-        this.stage.scaleMode=egret.StageScaleMode.EXACT_FIT;
+        // this.stage.scaleMode=egret.StageScaleMode.EXACT_FIT;
         this.stage.addChild(this.scene);
 
         
@@ -63,23 +63,21 @@ class P3Scene{
     }
 
     private createView(){
-        var bg0:egret.Bitmap=this.createBitmapByName('bk-sanshe_png');
+        
         var bg1:egret.Bitmap=this.createBitmapByName('bk-dian_png');
         
         var bg2:egret.Shape=new egret.Shape;
-        bg2.graphics.beginFill(0xffda0e,1);
+        bg2.graphics.beginFill(0x89c6ee,1);
         bg2.graphics.drawRect(0,0,this.stageWidth,this.stageHeight);
         bg2.graphics.endFill();
 
         this.scene.addChild(bg2);
         
-        this.scene.addChild(bg0);
+
         this.scene.addChild(bg1);
 
         var xinzhi:egret.Bitmap=this.createBitmapByName('xinzhi_png');
         this.scene.addChild(xinzhi);
-        xinzhi.y=28;
-        xinzhi.x=29;
 
         var logo:egret.Bitmap=this.createBitmapByName('icon-emao_png');
         this.scene.addChild(logo);
@@ -100,20 +98,20 @@ class P3Scene{
 
         var btn1:egret.Bitmap=this.createBitmapByName('btn-1_png');
         this.scene.addChild(btn1);
-        btn1.y=940;
-        btn1.x=64;
+        btn1.y=928;
+        btn1.x=84;
         this.btn1=btn1;
 
         var btn2:egret.Bitmap=this.createBitmapByName('btn-2_png');
         this.scene.addChild(btn2);
-        btn2.y=940;
-        btn2.x=350;
+        btn2.y=928;
+        btn2.x=429;
         this.btn2=btn2;
 
         var btn3:egret.Bitmap=this.createBitmapByName('btn-3_png');
         this.scene.addChild(btn3);
-        btn3.y=1041;
-        btn3.x=350;
+        btn3.y=1017;
+        btn3.x=263;
         this.btn3=btn3;
 
         var leftHand:egret.Bitmap=this.createBitmapByName('shou--left_png');

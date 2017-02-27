@@ -109,30 +109,16 @@ var Main = (function (_super) {
         var bg0 = new egret.Shape;
         var stageW = this.stage.stageWidth;
         var stageH = this.stage.stageHeight;
-        bg0.graphics.beginFill(0xffda0e, 1);
+        bg0.graphics.beginFill(0x8afbf4, 1);
         bg0.graphics.drawRect(0, 0, stageW, stageH);
         bg0.graphics.endFill();
         scene.addChild(bg0);
-        var bg1 = this.createBitmapByName("bk-sanshe_png");
+        var bg1 = this.createBitmapByName("bk-p1_png");
         scene.addChild(bg1);
-        var bg2 = this.createBitmapByName("bk-dian_png");
-        scene.addChild(bg2);
-        var bg3 = this.createBitmapByName("bk-p1_png");
-        scene.addChild(bg3);
-        var bgL = this.createBitmapByName('left_png');
-        var bgR = this.createBitmapByName('right_png');
-        bgL.x = 0;
-        bgL.y = 658;
-        scene.addChild(bgL);
-        bgR.x = stageW - 141;
-        bgR.y = 658;
-        scene.addChild(bgR);
-        var logo = this.createBitmapByName('icon-emao_png');
-        scene.addChild(logo);
         var btn = this.createBitmapByName('btn-lijixiaheishou_png');
         scene.addChild(btn);
-        btn.x = 82;
-        btn.y = 995;
+        btn.x = 273;
+        btn.y = 1032;
         this.addChild(scene);
         btn.touchEnabled = true;
         btn.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
@@ -150,10 +136,6 @@ var Main = (function (_super) {
             _this.createGameScene2();
             // this.createGameScene3();
             _this.setChildIndex(scene, scene.numChildren - 1);
-        }, this, true);
-        logo.touchEnabled = true;
-        logo.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            // window.location.href='http://m.emao.com';
         }, this, true);
     };
     p.createGameScene2 = function () {

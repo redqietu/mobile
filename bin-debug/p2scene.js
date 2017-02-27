@@ -29,7 +29,7 @@ var P2Scene = (function () {
     p.createScore = function () {
         this.container.addChild(this.scoreLabel);
         this.setScore(P2Scene.score = 0);
-        this.scoreLabel.x = this.stageWidth - 60;
+        this.scoreLabel.x = this.stageWidth - 120;
         this.scoreLabel.y = 30;
         this.scoreLabel.textColor = 0xe01717;
     };
@@ -41,7 +41,7 @@ var P2Scene = (function () {
         this.deadlineLabel.size = 60;
     };
     p.setScore = function (score) {
-        this.scoreLabel.text = "" + score;
+        this.scoreLabel.text = "\u70B9\u51FB" + score;
     };
     p.setDeadline = function (time) {
         if (time % 60 == 0) {
@@ -91,34 +91,9 @@ var P2Scene = (function () {
         display.touchEnabled = true;
         this.world.addBody(body);
         this.container.addChild(display);
+        this.container.swapChildren(display, this.ad);
     };
     p.createGround = function () {
-        // var planeShape2:p2.Plane = new p2.Box({
-        //     width:1,
-        //     height:100000000
-        // });
-        // var planeBody2:p2.Body = new p2.Body({
-        //     mass:100000,
-        //     position:[0,this.stageHeight/this.factor],
-        //     type:this.bodyType,
-        //     density:100000,
-        //     angle:Math.PI/4
-        // });
-        // planeBody2.addShape(planeShape2);
-        // this.world.addBody(planeBody2);
-        // var planeShape3:p2.Plane = new p2.Box({
-        //     width:1,
-        //     height:100000000
-        // });
-        // var planeBody3:p2.Body = new p2.Body({
-        //     mass:100000,
-        //     position:[(this.stageWidth)/this.factor,this.stageHeight/this.factor],
-        //     type:this.bodyType,
-        //     density:100000,
-        //     angle:-Math.PI/4
-        // });
-        // planeBody3.addShape(planeShape3);
-        // this.world.addBody(planeBody3);
         var planeShape = new p2.Plane({});
         var planeBody = new p2.Body({
             mass: 0,
@@ -172,7 +147,7 @@ var P2Scene = (function () {
             if (i % 5 === 0) {
                 this.setDeadline(--P2Scene.deadline);
             }
-            this.createDurex(onTap, "tt" + n + "_png", "xtt" + n + "_png");
+            this.createDurex(onTap, "tt1_png", "xtt1_png");
         }, this);
         timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function (e) {
             document.querySelector('title').innerHTML = "\u8036\uFF0C\u6211\u6210\u529F\u624E\u7834\u4E86" + P2Scene.score + "\u4E2A\u5957\uFF0C\u8BA9\u4ED6\u4EEC\u559C\u5F53\u7239\uFF0C\u5FEB\u6765\u53C2\u4E0E\u5427\uFF01";
@@ -193,27 +168,27 @@ var P2Scene = (function () {
         var container = new egret.DisplayObjectContainer;
         this.dialog = this.createBitmapByName('dialog_png');
         container.addChild(this.dialog);
-        this.dialog.x = 27;
-        this.dialog.y = 370;
+        this.dialog.x = 95;
+        this.dialog.y = 338;
         var text1 = new egret.TextField;
-        text1.text = "\u606D\u559C\uFF0C\u60A8\u6210\u529F\u624E\u7834\u4E86" + n + "\u4E2A\u5957";
+        text1.text = "\u606D\u559C\u60A8\u6458\u5230" + n + "\u6735\u6843\u82B1";
         var text2 = new egret.TextField;
-        text2.text = '让他们喜当爹';
+        text2.text = '看来您要走桃花运';
         text1.textAlign = 'center';
         text2.textAlign = 'center';
         text1.width = 686;
         text2.width = 686;
         text1.size = 50;
         text2.size = 50;
-        text1.textColor = 0x000;
-        text2.textColor = 0x000;
+        text1.textColor = 0xffbdcf;
+        text2.textColor = 0xffbdcf;
         text1.y = 445;
         text2.y = 503;
         text1.x = 32;
         text2.x = 32;
         this.btn_queding = this.createBitmapByName('btn-queding_png');
-        this.btn_queding.y = 616;
-        this.btn_queding.x = 136;
+        this.btn_queding.y = 560;
+        this.btn_queding.x = 288;
         container.addChild(this.btn_queding);
         this.btn_queding.touchEnabled = true;
         this.btn_queding.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
@@ -261,7 +236,16 @@ var P2Scene = (function () {
         scene.x = 0;
         scene.y = 0;
         var bg = this.createBitmapByName('bk-p2_png');
-        var car = this.createBitmapByName('car_png');
+        var ad = this.createBitmapByName('ad_png');
+        this.ad = ad;
+        bg.x = 0;
+        bg.y = 0;
+        window.__height = window.__height || this.stage.height;
+        bg.height = window.__height - 240;
+        ad.x = 0;
+        ad.y = window.__height - 240;
+        ad.width = 750;
+        ad.height = 240;
         var mask = new egret.Shape();
         var _a = [
             this.createBitmapByName('n3_png'),
@@ -281,17 +265,16 @@ var P2Scene = (function () {
         djs3.anchorOffsetX = 43;
         djs3.anchorOffsetY = 43;
         mask.graphics.beginFill(0x000, 1);
-        mask.graphics.drawRect(0, 0, this.stage.width, this.stage.height);
+        mask.graphics.drawRect(0, 0, this.stage.width, window.__height - 240);
         mask.graphics.endFill();
         scene.addChild(bg);
-        scene.addChild(car);
+        scene.addChild(ad);
         scene.addChild(mask);
         scene.addChild(djs1);
         scene.addChild(djs2);
         scene.addChild(djs3);
         this.stage.addChild(scene);
         this.stage.setChildIndex(scene, scene.numChildren - 3);
-        this.car = car;
         this.mask = mask;
         this.djs1 = djs1;
         this.djs2 = djs2;
@@ -299,7 +282,6 @@ var P2Scene = (function () {
     };
     p.show = function (onComplete) {
         var scene = this.scene;
-        var car = this.car;
         var mask = this.mask;
         var djs1 = this.djs1;
         var djs2 = this.djs2;
@@ -309,40 +291,7 @@ var P2Scene = (function () {
                 onComplete();
             },
         });
-        scene.anchorOffsetX = this.stage.width / 2;
-        scene.anchorOffsetY = this.stage.height / 2;
-        timeline.fromTo(scene, 1, {
-            x: 0,
-            y: 0,
-            alpha: 0.1,
-            // rotation: 100,
-            ease: Back.easeOut,
-            scaleX: 9,
-            scaleY: 9,
-        }, {
-            x: 0,
-            y: 0,
-            // rotation: 0,
-            alpha: 1,
-            // ease: SlowMo.ease.config(0.1, 0.9)
-            ease: Back.easeInOut,
-            scaleX: 9,
-            scaleY: 9,
-        }).fromTo(scene, 1, {
-            scaleX: 9,
-            scaleY: 9,
-        }, {
-            scaleX: 1,
-            scaleY: 1,
-            anchorOffsetX: 0,
-            anchorOffsetY: 0,
-        }).fromTo(car, 1, {
-            x: -400,
-            y: 40
-        }, {
-            x: 0,
-            y: 0
-        }).fromTo(mask, 0.2, {
+        timeline.fromTo(mask, 0.2, {
             alpha: 0
         }, {
             alpha: 0.7
