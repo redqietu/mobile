@@ -46,8 +46,8 @@ class P3Scene{
         },ct,false);
 
         var share=this.createBitmapByName('layer-share_png');
-        share.x=92;
-        share.y=100;
+        share.x=0;
+        share.y=0;
 
         var close=this.createBitmapByName('btn-close_png');
         close.x=23;
@@ -80,10 +80,22 @@ class P3Scene{
         this.scene.addChild(xinzhi);
 
         var logo:egret.Bitmap=this.createBitmapByName('icon-emao_png');
-        this.scene.addChild(logo);
+        // this.scene.addChild(logo);
         logo.y=22;
         logo.x=29;
         this.logo=logo;
+
+        
+        var ad:egret.Bitmap=this.createBitmapByName('ad_png');
+        this.ad=ad;
+        window.__height=window.__height||this.stage.height;
+        
+
+        ad.x=0;
+        ad.y=window.__height-240;
+        ad.width=750;
+        ad.height=240;
+        this.scene.addChild(ad);
 
         var tts:egret.Bitmap=this.createBitmapByName('tts_png');
         this.scene.addChild(tts);
@@ -98,19 +110,19 @@ class P3Scene{
 
         var btn1:egret.Bitmap=this.createBitmapByName('btn-1_png');
         this.scene.addChild(btn1);
-        btn1.y=928;
+        btn1.y=870;
         btn1.x=84;
         this.btn1=btn1;
 
         var btn2:egret.Bitmap=this.createBitmapByName('btn-2_png');
         this.scene.addChild(btn2);
-        btn2.y=928;
+        btn2.y=870;
         btn2.x=429;
         this.btn2=btn2;
 
         var btn3:egret.Bitmap=this.createBitmapByName('btn-3_png');
         this.scene.addChild(btn3);
-        btn3.y=1017;
+        btn3.y=959;
         btn3.x=263;
         this.btn3=btn3;
 

@@ -29,19 +29,20 @@ var P2Scene = (function () {
     p.createScore = function () {
         this.container.addChild(this.scoreLabel);
         this.setScore(P2Scene.score = 0);
-        this.scoreLabel.x = this.stageWidth - 120;
-        this.scoreLabel.y = 30;
-        this.scoreLabel.textColor = 0xe01717;
+        this.scoreLabel.x = this.stageWidth - 140;
+        this.scoreLabel.y = 50;
+        this.scoreLabel.textColor = 0xffffff;
     };
     p.createDeadline = function () {
         this.container.addChild(this.deadlineLabel);
         this.setDeadline(this.deadline = P2Scene.TIME);
         this.deadlineLabel.x = this.stageWidth / 2 - 80;
+        this.deadlineLabel.y = 30;
         this.deadlineLabel.textColor = 0xffffff;
         this.deadlineLabel.size = 60;
     };
     p.setScore = function (score) {
-        this.scoreLabel.text = "\u70B9\u51FB" + score;
+        this.scoreLabel.text = "\u51FB\u4E2D\uFF1A" + score;
     };
     p.setDeadline = function (time) {
         if (time % 60 == 0) {
@@ -150,7 +151,7 @@ var P2Scene = (function () {
             this.createDurex(onTap, "tt1_png", "xtt1_png");
         }, this);
         timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function (e) {
-            document.querySelector('title').innerHTML = "\u8036\uFF0C\u6211\u6210\u529F\u624E\u7834\u4E86" + P2Scene.score + "\u4E2A\u5957\uFF0C\u8BA9\u4ED6\u4EEC\u559C\u5F53\u7239\uFF0C\u5FEB\u6765\u53C2\u4E0E\u5427\uFF01";
+            document.querySelector('title').innerHTML = "\u606D\u559C\uFF0C\u60A8\u5171\u6458\u5230" + P2Scene.score + "\u6735\u6843\u82B1\uFF0C\u770B\u6765\u8981\u8D70\u6843\u82B1\u8FD0\uFF5E_\u4E00\u732B\u6C7D\u8F66\u7F51";
             ti.unregister(frame, null);
             this.alert(P2Scene.score);
         }, this);
@@ -173,7 +174,7 @@ var P2Scene = (function () {
         var text1 = new egret.TextField;
         text1.text = "\u606D\u559C\u60A8\u6458\u5230" + n + "\u6735\u6843\u82B1";
         var text2 = new egret.TextField;
-        text2.text = '看来您要走桃花运';
+        text2.text = '看来您要走桃花运~';
         text1.textAlign = 'center';
         text2.textAlign = 'center';
         text1.width = 686;
@@ -182,8 +183,8 @@ var P2Scene = (function () {
         text2.size = 50;
         text1.textColor = 0xffbdcf;
         text2.textColor = 0xffbdcf;
-        text1.y = 445;
-        text2.y = 503;
+        text1.y = 430;
+        text2.y = 490;
         text1.x = 32;
         text2.x = 32;
         this.btn_queding = this.createBitmapByName('btn-queding_png');
@@ -270,6 +271,7 @@ var P2Scene = (function () {
         scene.addChild(bg);
         scene.addChild(ad);
         scene.addChild(mask);
+        scene.swapChildren(mask, this.ad);
         scene.addChild(djs1);
         scene.addChild(djs2);
         scene.addChild(djs3);

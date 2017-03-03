@@ -115,10 +115,15 @@ var Main = (function (_super) {
         scene.addChild(bg0);
         var bg1 = this.createBitmapByName("bk-p1_png");
         scene.addChild(bg1);
+        var logo = this.createBitmapByName('icon-emao_png');
+        scene.addChild(logo);
+        logo.y = 6;
+        logo.x = 0;
+        // this.logo=logo;
         var btn = this.createBitmapByName('btn-lijixiaheishou_png');
         scene.addChild(btn);
         btn.x = 273;
-        btn.y = 1032;
+        btn.y = 1094;
         this.addChild(scene);
         btn.touchEnabled = true;
         btn.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {

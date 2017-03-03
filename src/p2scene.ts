@@ -50,19 +50,20 @@ class P2Scene{
         
         this.container.addChild(this.scoreLabel);
         this.setScore(P2Scene.score=0);
-        this.scoreLabel.x=this.stageWidth-120;
-        this.scoreLabel.y=30;
-        this.scoreLabel.textColor=0xe01717;
+        this.scoreLabel.x=this.stageWidth-140;
+        this.scoreLabel.y=50;
+        this.scoreLabel.textColor=0xffffff;
     }
     private createDeadline(){
         this.container.addChild(this.deadlineLabel);
         this.setDeadline(this.deadline=P2Scene.TIME);
         this.deadlineLabel.x=this.stageWidth/2-80;
+        this.deadlineLabel.y=30;
         this.deadlineLabel.textColor=0xffffff;
         this.deadlineLabel.size=60;
     }
     setScore(score){
-        this.scoreLabel.text=`点击${score}`;
+        this.scoreLabel.text=`击中：${score}`;
     }
     setDeadline(time){
         if(time%60==0){
@@ -175,7 +176,7 @@ class P2Scene{
             this.createDurex(onTap,`tt1_png`,`xtt1_png`);
        },this);
        timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,function(e){
-            document.querySelector('title').innerHTML=`耶，我成功扎破了${P2Scene.score}个套，让他们喜当爹，快来参与吧！`;
+            document.querySelector('title').innerHTML=`恭喜，您共摘到${P2Scene.score}朵桃花，看来要走桃花运～_一猫汽车网`;
             ti.unregister(frame,null);
             this.alert(P2Scene.score);
        },this);
@@ -198,7 +199,7 @@ class P2Scene{
         let text1=new egret.TextField;
         text1.text=`恭喜您摘到${n}朵桃花`;
         let text2=new egret.TextField;
-        text2.text='看来您要走桃花运';
+        text2.text='看来您要走桃花运~';
         text1.textAlign='center';
         text2.textAlign='center';
         text1.width=686;
@@ -207,8 +208,8 @@ class P2Scene{
         text2.size=50;
         text1.textColor=0xffbdcf;
         text2.textColor=0xffbdcf;
-        text1.y=445;
-        text2.y=503;
+        text1.y=430;
+        text2.y=490;
         text1.x=32;
         text2.x=32;
         this.btn_queding=this.createBitmapByName('btn-queding_png');
@@ -300,6 +301,7 @@ class P2Scene{
         scene.addChild(bg);
         scene.addChild(ad);
         scene.addChild(mask);
+        scene.swapChildren(mask,this.ad);
         scene.addChild(djs1);
         scene.addChild(djs2);
         scene.addChild(djs3);

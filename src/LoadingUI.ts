@@ -42,7 +42,7 @@ class LoadingUI extends egret.Sprite {
         var width=egret.MainContext.instance.stage.stageWidth;
         var height=egret.MainContext.instance.stage.stageHeight;
         this.bg=new egret.Shape;
-        this.bg.graphics.beginFill(0xffda0e,1);
+        this.bg.graphics.beginFill(0x91f9f2,1);
         this.bg.graphics.drawRect(0,0,width,height);
         this.bg.graphics.endFill();
         this.addChild(this.bg);
