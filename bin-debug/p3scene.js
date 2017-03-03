@@ -107,6 +107,11 @@ var P3Scene = (function () {
             btn1();
             this.createLayer();
         }, this);
+        this.ad.touchEnabled = true;
+        this.ad.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
+            btn4();
+            document.location.href = 'http://yuehui.m.emao.com';
+        }, this);
         this.btn2.touchEnabled = true;
         this.btn2.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             var _this = this;

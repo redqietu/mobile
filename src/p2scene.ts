@@ -206,8 +206,8 @@ class P2Scene{
         text2.width=686;
         text1.size=50;
         text2.size=50;
-        text1.textColor=0xffbdcf;
-        text2.textColor=0xffbdcf;
+        text1.textColor=0x3fe4db;
+        text2.textColor=0x3fe4db;
         text1.y=430;
         text2.y=490;
         text1.x=32;
@@ -275,6 +275,12 @@ class P2Scene{
         ad.y=window.__height-240;
         ad.width=750;
         ad.height=240;
+        
+        this.ad.touchEnabled=true;
+        this.ad.addEventListener(egret.TouchEvent.TOUCH_TAP,function(){
+            btn4();
+            document.location.href='http://yuehui.m.emao.com';
+        },this);
         var mask:egret.Shape=new egret.Shape();
         var [djs1,djs2,djs3]=[
             this.createBitmapByName('n3_png'),
